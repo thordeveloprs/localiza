@@ -278,15 +278,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SamplePage
   {
-    'igctubkw': {
+    'hbtblts8': {
       'en': 'Click here',
       'pt': '',
     },
-    'poftfsg9': {
+    '5kfqio5m': {
       'en': 'Test Page',
       'pt': '',
     },
-    'fw3uruod': {
+    'swi9h6p0': {
       'en': 'Home',
       'pt': '',
     },

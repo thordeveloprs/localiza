@@ -11,13 +11,13 @@ import 'dart:js' as js;
 
 Future getEntityDocument() async {
   String entity_key = js.context['location']['href'];
-  var docSnapshot = FirebaseFirestore.instance
+  FirebaseFirestore.instance
       .collection('users')
       .where("entity_key", isEqualTo: entity_key)
-      .get();
-
-  FFAppState().logoURL = docSnapshot["logo_icon"];
-  FFAppState().primaryBtnColor = docSnapshot["btn_color"];
-
+      .get()
+      .then((value) {
+    FFAppState().logoURL = value.docs[0]["logo_icon"];
+    FFAppState().primaryBtnColor = value.docs[0]["btn_color"];
+  });
   return;
 }

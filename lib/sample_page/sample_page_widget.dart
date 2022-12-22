@@ -1,7 +1,9 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +20,10 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.getEntityDocument();
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -34,7 +40,7 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            'poftfsg9' /* Test Page */,
+            '5kfqio5m' /* Test Page */,
           ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Brazila',
@@ -70,7 +76,7 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
                         print('Button pressed ...');
                       },
                       text: FFLocalizations.of(context).getText(
-                        'igctubkw' /* Click here */,
+                        'hbtblts8' /* Click here */,
                       ),
                       options: FFButtonOptions(
                         width: 130,
