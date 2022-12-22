@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "890321468274",
+    "project_id": "manager-app-f75a4",
+    "storage_bucket": "manager-app-f75a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890321468274:android:b2d0b2491c90adb018bbeb",
+        "android_client_info": {
+          "package_name": "com.mycompany.cacaoshow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890321468274-5qdovsojrmbovut5kicuppc1b3kjte90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNvhlpnUtAETwo85oDFAGtPsLG-_iBm-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890321468274-5qdovsojrmbovut5kicuppc1b3kjte90.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "890321468274-03ouj0a2k365oqbb28kgaspdoo5gb2e4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.cacaoshow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

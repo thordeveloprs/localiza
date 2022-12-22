@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>890321468274-03ouj0a2k365oqbb28kgaspdoo5gb2e4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.890321468274-03ouj0a2k365oqbb28kgaspdoo5gb2e4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAlc94ybTTTUSq7LR9eXxHEwPgv5nA-TLs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>890321468274</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.cacaoshow</string>
+	<key>PROJECT_ID</key>
+	<string>manager-app-f75a4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>manager-app-f75a4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:890321468274:ios:c3cdc8fe67261c9918bbeb</string>
+</dict>
+</plist>
