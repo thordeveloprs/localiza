@@ -110,6 +110,20 @@ class _$LocationsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.primaryBtnColor;
+    if (value != null) {
+      result
+        ..add('primary_btn_color')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(Color)));
+    }
+    value = object.secondaryBtnColor;
+    if (value != null) {
+      result
+        ..add('secondary_btn_color')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(Color)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -185,6 +199,14 @@ class _$LocationsRecordSerializer
           result.locationCountry = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'primary_btn_color':
+          result.primaryBtnColor = serializers.deserialize(value,
+              specifiedType: const FullType(Color)) as Color?;
+          break;
+        case 'secondary_btn_color':
+          result.secondaryBtnColor = serializers.deserialize(value,
+              specifiedType: const FullType(Color)) as Color?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -226,6 +248,10 @@ class _$LocationsRecord extends LocationsRecord {
   @override
   final String? locationCountry;
   @override
+  final Color? primaryBtnColor;
+  @override
+  final Color? secondaryBtnColor;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$LocationsRecord([void Function(LocationsRecordBuilder)? updates]) =>
@@ -245,6 +271,8 @@ class _$LocationsRecord extends LocationsRecord {
       this.locationReviewCount,
       this.locationRating,
       this.locationCountry,
+      this.primaryBtnColor,
+      this.secondaryBtnColor,
       this.ffRef})
       : super._();
 
@@ -273,6 +301,8 @@ class _$LocationsRecord extends LocationsRecord {
         locationReviewCount == other.locationReviewCount &&
         locationRating == other.locationRating &&
         locationCountry == other.locationCountry &&
+        primaryBtnColor == other.primaryBtnColor &&
+        secondaryBtnColor == other.secondaryBtnColor &&
         ffRef == other.ffRef;
   }
 
@@ -292,22 +322,28 @@ class _$LocationsRecord extends LocationsRecord {
                                                 $jc(
                                                     $jc(
                                                         $jc(
-                                                            0,
-                                                            locationAddress
+                                                            $jc(
+                                                                $jc(
+                                                                    0,
+                                                                    locationAddress
+                                                                        .hashCode),
+                                                                locationCity
+                                                                    .hashCode),
+                                                            locationGooglePrimaryCategory
                                                                 .hashCode),
-                                                        locationCity.hashCode),
-                                                    locationGooglePrimaryCategory
-                                                        .hashCode),
-                                                locationGooglePlaceID.hashCode),
-                                            locationName.hashCode),
-                                        locationPhone.hashCode),
-                                    locationState.hashCode),
-                                locationStoreCode.hashCode),
-                            locationWebsite.hashCode),
-                        locationPostal.hashCode),
-                    locationReviewCount.hashCode),
-                locationRating.hashCode),
-            locationCountry.hashCode),
+                                                        locationGooglePlaceID
+                                                            .hashCode),
+                                                    locationName.hashCode),
+                                                locationPhone.hashCode),
+                                            locationState.hashCode),
+                                        locationStoreCode.hashCode),
+                                    locationWebsite.hashCode),
+                                locationPostal.hashCode),
+                            locationReviewCount.hashCode),
+                        locationRating.hashCode),
+                    locationCountry.hashCode),
+                primaryBtnColor.hashCode),
+            secondaryBtnColor.hashCode),
         ffRef.hashCode));
   }
 
@@ -327,6 +363,8 @@ class _$LocationsRecord extends LocationsRecord {
           ..add('locationReviewCount', locationReviewCount)
           ..add('locationRating', locationRating)
           ..add('locationCountry', locationCountry)
+          ..add('primaryBtnColor', primaryBtnColor)
+          ..add('secondaryBtnColor', secondaryBtnColor)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -400,6 +438,16 @@ class LocationsRecordBuilder
   set locationCountry(String? locationCountry) =>
       _$this._locationCountry = locationCountry;
 
+  Color? _primaryBtnColor;
+  Color? get primaryBtnColor => _$this._primaryBtnColor;
+  set primaryBtnColor(Color? primaryBtnColor) =>
+      _$this._primaryBtnColor = primaryBtnColor;
+
+  Color? _secondaryBtnColor;
+  Color? get secondaryBtnColor => _$this._secondaryBtnColor;
+  set secondaryBtnColor(Color? secondaryBtnColor) =>
+      _$this._secondaryBtnColor = secondaryBtnColor;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -424,6 +472,8 @@ class LocationsRecordBuilder
       _locationReviewCount = $v.locationReviewCount;
       _locationRating = $v.locationRating;
       _locationCountry = $v.locationCountry;
+      _primaryBtnColor = $v.primaryBtnColor;
+      _secondaryBtnColor = $v.secondaryBtnColor;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -460,6 +510,8 @@ class LocationsRecordBuilder
             locationReviewCount: locationReviewCount,
             locationRating: locationRating,
             locationCountry: locationCountry,
+            primaryBtnColor: primaryBtnColor,
+            secondaryBtnColor: secondaryBtnColor,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
