@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +45,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     return StreamBuilder<List<EntitiesRecord>>(
       stream: queryEntitiesRecord(
         queryBuilder: (entitiesRecord) =>
-            entitiesRecord.where('name', isEqualTo: 'Burger King'),
+            entitiesRecord.where('name', isEqualTo: FFAppState().key),
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -219,22 +220,31 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: double.infinity,
                                               height: 55,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    FFAppState().textFieldClr,
+                                                color: loginPageEntitiesRecord!
+                                                    .darkBgPageColor,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
+                                                border: Border.all(
+                                                  width: 2,
+                                                ),
                                               ),
                                               child: TextFormField(
                                                 controller:
                                                     loginEmailController,
-                                                autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
-                                                  hintText: FFLocalizations.of(
+                                                  labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'z5r0x132' /* Email */,
+                                                    '8p41xzdn' /* Email */,
                                                   ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color: Colors.white,
+                                                      ),
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyText2
@@ -247,9 +257,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          loginPageEntitiesRecord!
-                                                              .primaryBtnColor,
+                                                      color: Color(0x00000000),
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -259,9 +267,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          loginPageEntitiesRecord!
-                                                              .primaryBtnColor,
+                                                      color: Color(0x00000000),
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -303,23 +309,32 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: double.infinity,
                                               height: 55,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    FFAppState().textFieldClr,
+                                                color: loginPageEntitiesRecord!
+                                                    .darkBgPageColor,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
+                                                border: Border.all(
+                                                  width: 2,
+                                                ),
                                               ),
                                               child: TextFormField(
                                                 controller:
                                                     loginPasswordController,
-                                                autofocus: true,
                                                 obscureText:
                                                     !loginPasswordVisibility,
                                                 decoration: InputDecoration(
-                                                  hintText: FFLocalizations.of(
+                                                  labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'y1m8q0w9' /* Password */,
+                                                    '5cg4btsu' /* Password */,
                                                   ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color: Colors.white,
+                                                      ),
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyText2
@@ -332,10 +347,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          loginPageEntitiesRecord!
-                                                              .primaryBtnColor,
-                                                      width: 2,
+                                                      color: Color(0x00000000),
+                                                      width: 1,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -344,10 +357,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          loginPageEntitiesRecord!
-                                                              .primaryBtnColor,
-                                                      width: 2,
+                                                      color: Color(0x00000000),
+                                                      width: 1,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -357,7 +368,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 2,
+                                                      width: 1,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -367,7 +378,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 2,
+                                                      width: 1,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -403,6 +414,60 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                             ),
                                             InkWell(
                                               onTap: () async {
+                                                FFAppState().key =
+                                                    loginPageEntitiesRecord!
+                                                        .entityKey!;
+                                                FFAppState().name =
+                                                    loginPageEntitiesRecord!
+                                                        .name!;
+                                                FFAppState().bgclr =
+                                                    loginPageEntitiesRecord!
+                                                        .bgColor!;
+                                                FFAppState().logoIcon =
+                                                    loginPageEntitiesRecord!
+                                                        .logoIcon!;
+                                                FFAppState().appTitle =
+                                                    loginPageEntitiesRecord!
+                                                        .appTitle!;
+                                                FFAppState().appTitleClr =
+                                                    loginPageEntitiesRecord!
+                                                        .appTitleColor!;
+                                                FFAppState().appTagLine =
+                                                    loginPageEntitiesRecord!
+                                                        .appTagLine!;
+                                                FFAppState().appTagLineClr =
+                                                    loginPageEntitiesRecord!
+                                                        .appTagColor!;
+                                                FFAppState().primaryBtnClr =
+                                                    loginPageEntitiesRecord!
+                                                        .primaryBtnColor!;
+                                                FFAppState().secondaryBtnClr =
+                                                    loginPageEntitiesRecord!
+                                                        .secondaryBtnColor!;
+                                                FFAppState().darkBgPageClr =
+                                                    loginPageEntitiesRecord!
+                                                        .darkBgPageColor!;
+                                                FFAppState().liveDivisionClr =
+                                                    loginPageEntitiesRecord!
+                                                        .liveDivisionColor!;
+                                                FFAppState().navigationIconClr =
+                                                    loginPageEntitiesRecord!
+                                                        .navigationIconColor!;
+                                                FFAppState().custonId =
+                                                    loginPageEntitiesRecord!
+                                                        .customId!;
+                                                FFAppState().createdAt =
+                                                    loginPageEntitiesRecord!
+                                                        .createdAt;
+                                                FFAppState().languageCode =
+                                                    loginPageEntitiesRecord!
+                                                        .languageCode!;
+                                                FFAppState().entityKey =
+                                                    loginPageEntitiesRecord!
+                                                        .entityKey!;
+                                                FFAppState().bgImage =
+                                                    loginPageEntitiesRecord!
+                                                        .bgImg!;
                                                 GoRouter.of(context)
                                                     .prepareAuthEvent();
 

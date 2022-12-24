@@ -15,6 +15,33 @@ class FFAppState extends ChangeNotifier {
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
+    _name = prefs.getString('ff_name') ?? _name;
+    _bgclr = _colorFromIntValue(prefs.getInt('ff_bgclr')) ?? _bgclr;
+    _logoIcon = prefs.getString('ff_logoIcon') ?? _logoIcon;
+    _appTitle = prefs.getString('ff_appTitle') ?? _appTitle;
+    _appTitleClr =
+        _colorFromIntValue(prefs.getInt('ff_appTitleClr')) ?? _appTitleClr;
+    _appTagLine = prefs.getString('ff_appTagLine') ?? _appTagLine;
+    _appTagLineClr =
+        _colorFromIntValue(prefs.getInt('ff_appTagLineClr')) ?? _appTagLineClr;
+    _primaryBtnClr =
+        _colorFromIntValue(prefs.getInt('ff_primaryBtnClr')) ?? _primaryBtnClr;
+    _secondaryBtnClr = _colorFromIntValue(prefs.getInt('ff_secondaryBtnClr')) ??
+        _secondaryBtnClr;
+    _darkBgPageClr =
+        _colorFromIntValue(prefs.getInt('ff_darkBgPageClr')) ?? _darkBgPageClr;
+    _liveDivisionClr = _colorFromIntValue(prefs.getInt('ff_liveDivisionClr')) ??
+        _liveDivisionClr;
+    _navigationIconClr =
+        _colorFromIntValue(prefs.getInt('ff_navigationIconClr')) ??
+            _navigationIconClr;
+    _custonId = prefs.getInt('ff_custonId') ?? _custonId;
+    _createdAt = prefs.containsKey('ff_createdAt')
+        ? DateTime.fromMillisecondsSinceEpoch(prefs.getInt('ff_createdAt')!)
+        : null;
+    _languageCode = prefs.getString('ff_languageCode') ?? _languageCode;
+    _entityKey = prefs.getString('ff_entityKey') ?? _entityKey;
+    _bgImage = prefs.getString('ff_bgImage') ?? _bgImage;
   }
 
   static bool _shouldNotify = true;
@@ -77,56 +104,149 @@ class FFAppState extends ChangeNotifier {
     _imgPath.remove(_value);
   }
 
-  String _description = 'Gerenciador de Localidades no Google';
-  String get description => _description;
-  set description(String _value) {
+  String _key = 'Starbucks cafe company';
+  String get key => _key;
+  set key(String _value) {
     _maybeNotifyListeners();
-    _description = _value;
+    _key = _value;
   }
 
-  String _subDescription =
-      'Atualizar as information das agencias de forma segura a precisa';
-  String get subDescription => _subDescription;
-  set subDescription(String _value) {
+  String _name = '';
+  String get name => _name;
+  set name(String _value) {
     _maybeNotifyListeners();
-    _subDescription = _value;
+    _name = _value;
+    prefs.setString('ff_name', _value);
   }
 
-  String _bgImage =
-      'https://s2.glbimg.com/eyXFx93GvmeWL6wHIFSSa4n-OOs=/0x0:1814x1330/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2021/K/t/0LSK5dQr22BvWqbsQ9Jw/sede-localiza3.jpg';
+  Color _bgclr = Colors.transparent;
+  Color get bgclr => _bgclr;
+  set bgclr(Color _value) {
+    _maybeNotifyListeners();
+    _bgclr = _value;
+    prefs.setString('ff_bgclr', _value.value.toString());
+  }
+
+  String _logoIcon = '';
+  String get logoIcon => _logoIcon;
+  set logoIcon(String _value) {
+    _maybeNotifyListeners();
+    _logoIcon = _value;
+    prefs.setString('ff_logoIcon', _value);
+  }
+
+  String _appTitle = '';
+  String get appTitle => _appTitle;
+  set appTitle(String _value) {
+    _maybeNotifyListeners();
+    _appTitle = _value;
+    prefs.setString('ff_appTitle', _value);
+  }
+
+  Color _appTitleClr = Colors.transparent;
+  Color get appTitleClr => _appTitleClr;
+  set appTitleClr(Color _value) {
+    _maybeNotifyListeners();
+    _appTitleClr = _value;
+    prefs.setString('ff_appTitleClr', _value.value.toString());
+  }
+
+  String _appTagLine = '';
+  String get appTagLine => _appTagLine;
+  set appTagLine(String _value) {
+    _maybeNotifyListeners();
+    _appTagLine = _value;
+    prefs.setString('ff_appTagLine', _value);
+  }
+
+  Color _appTagLineClr = Colors.transparent;
+  Color get appTagLineClr => _appTagLineClr;
+  set appTagLineClr(Color _value) {
+    _maybeNotifyListeners();
+    _appTagLineClr = _value;
+    prefs.setString('ff_appTagLineClr', _value.value.toString());
+  }
+
+  Color _primaryBtnClr = Colors.transparent;
+  Color get primaryBtnClr => _primaryBtnClr;
+  set primaryBtnClr(Color _value) {
+    _maybeNotifyListeners();
+    _primaryBtnClr = _value;
+    prefs.setString('ff_primaryBtnClr', _value.value.toString());
+  }
+
+  Color _secondaryBtnClr = Colors.transparent;
+  Color get secondaryBtnClr => _secondaryBtnClr;
+  set secondaryBtnClr(Color _value) {
+    _maybeNotifyListeners();
+    _secondaryBtnClr = _value;
+    prefs.setString('ff_secondaryBtnClr', _value.value.toString());
+  }
+
+  Color _darkBgPageClr = Colors.transparent;
+  Color get darkBgPageClr => _darkBgPageClr;
+  set darkBgPageClr(Color _value) {
+    _maybeNotifyListeners();
+    _darkBgPageClr = _value;
+    prefs.setString('ff_darkBgPageClr', _value.value.toString());
+  }
+
+  Color _liveDivisionClr = Colors.transparent;
+  Color get liveDivisionClr => _liveDivisionClr;
+  set liveDivisionClr(Color _value) {
+    _maybeNotifyListeners();
+    _liveDivisionClr = _value;
+    prefs.setString('ff_liveDivisionClr', _value.value.toString());
+  }
+
+  Color _navigationIconClr = Colors.transparent;
+  Color get navigationIconClr => _navigationIconClr;
+  set navigationIconClr(Color _value) {
+    _maybeNotifyListeners();
+    _navigationIconClr = _value;
+    prefs.setString('ff_navigationIconClr', _value.value.toString());
+  }
+
+  int _custonId = 0;
+  int get custonId => _custonId;
+  set custonId(int _value) {
+    _maybeNotifyListeners();
+    _custonId = _value;
+    prefs.setInt('ff_custonId', _value);
+  }
+
+  DateTime? _createdAt;
+  DateTime? get createdAt => _createdAt;
+  set createdAt(DateTime? _value) {
+    _maybeNotifyListeners();
+    _createdAt = _value;
+    _value != null
+        ? prefs.setInt('ff_createdAt', _value.millisecondsSinceEpoch)
+        : prefs.remove('ff_createdAt');
+  }
+
+  String _languageCode = '';
+  String get languageCode => _languageCode;
+  set languageCode(String _value) {
+    _maybeNotifyListeners();
+    _languageCode = _value;
+    prefs.setString('ff_languageCode', _value);
+  }
+
+  String _entityKey = '';
+  String get entityKey => _entityKey;
+  set entityKey(String _value) {
+    _maybeNotifyListeners();
+    _entityKey = _value;
+    prefs.setString('ff_entityKey', _value);
+  }
+
+  String _bgImage = '';
   String get bgImage => _bgImage;
   set bgImage(String _value) {
     _maybeNotifyListeners();
     _bgImage = _value;
-  }
-
-  String _logo =
-      'http://1.bp.blogspot.com/-Jz_ihS4ztDU/U0-7fnfasfI/AAAAAAAAfGM/R9x-Dg-ps34/s1600/Localiza-logo-2014.png';
-  String get logo => _logo;
-  set logo(String _value) {
-    _maybeNotifyListeners();
-    _logo = _value;
-  }
-
-  Color _bgTransparentClr = Color(1409323592);
-  Color get bgTransparentClr => _bgTransparentClr;
-  set bgTransparentClr(Color _value) {
-    _maybeNotifyListeners();
-    _bgTransparentClr = _value;
-  }
-
-  Color _themeClr = Color(4278227528);
-  Color get themeClr => _themeClr;
-  set themeClr(Color _value) {
-    _maybeNotifyListeners();
-    _themeClr = _value;
-  }
-
-  Color _textFieldClr = Color(1761645128);
-  Color get textFieldClr => _textFieldClr;
-  set textFieldClr(Color _value) {
-    _maybeNotifyListeners();
-    _textFieldClr = _value;
+    prefs.setString('ff_bgImage', _value);
   }
 }
 

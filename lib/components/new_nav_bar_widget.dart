@@ -32,7 +32,7 @@ class _NewNavBarWidgetState extends State<NewNavBarWidget> {
             width: 100,
             height: 60,
             decoration: BoxDecoration(
-              color: Color(0xFF1B1215),
+              color: FFAppState().primaryBtnClr,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -40,27 +40,27 @@ class _NewNavBarWidgetState extends State<NewNavBarWidget> {
               children: [
                 Icon(
                   Icons.add_sharp,
-                  color: Color(0xFF974221),
+                  color: FFAppState().secondaryBtnClr,
                   size: 30,
                 ),
                 Icon(
                   Icons.ios_share,
-                  color: Color(0xFF974221),
+                  color: FFAppState().secondaryBtnClr,
                   size: 30,
                 ),
                 FaIcon(
                   FontAwesomeIcons.edit,
-                  color: Color(0xFF974221),
+                  color: FFAppState().secondaryBtnClr,
                   size: 25,
                 ),
                 Icon(
                   Icons.folder_open,
-                  color: Color(0xFF974221),
+                  color: FFAppState().secondaryBtnClr,
                   size: 30,
                 ),
                 Icon(
                   Icons.delete_outlined,
-                  color: Color(0xFF974221),
+                  color: FFAppState().secondaryBtnClr,
                   size: 30,
                 ),
               ],

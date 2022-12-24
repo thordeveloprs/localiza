@@ -26,3 +26,7 @@ dynamic getHnW(int index) {
     return {"w": 50, "h": 45};
   }
 }
+
+Color getColor(Color? value) {
+  return value!;
+}

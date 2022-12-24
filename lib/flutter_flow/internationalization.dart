@@ -297,12 +297,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LoginPage
   {
-    'z5r0x132': {
+    '8p41xzdn': {
       'en': 'Email',
       'pt': '',
     },
-    'y1m8q0w9': {
+    'z5r0x132': {
+      'en': '',
+      'pt': '',
+    },
+    '5cg4btsu': {
       'en': 'Password',
+      'pt': '',
+    },
+    'y1m8q0w9': {
+      'en': '',
       'pt': '',
     },
     'f7trh3pu': {
