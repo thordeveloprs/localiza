@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +16,8 @@ class SamplePageWidget extends StatefulWidget {
 }
 
 class _SamplePageWidgetState extends State<SamplePageWidget> {
+  bool? result;
+  final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -22,10 +25,18 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
     super.initState();
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.getEntityDocument();
+      FFAppState().isloading = false;
+      result = await actions.getEntityDocument();
+      FFAppState().isloading = result!;
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _unfocusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -34,19 +45,18 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: Color(0x5F000000),
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            '5kfqio5m' /* Test Page */,
+            'tk14xaaj' /* Test Page */,
           ),
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Brazila',
+                fontFamily: 'Open Sans',
                 color: Colors.white,
                 fontSize: 22,
-                useGoogleFonts: false,
               ),
         ),
         actions: [],
@@ -55,50 +65,147 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
       ),
       body: SafeArea(
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Image.network(
-                FFAppState().logoURL,
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'hbtblts8' /* Click here */,
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  FFAppState().isloading.toString(),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Open Sans',
+                        color: FlutterFlowTheme.of(context).gray200,
                       ),
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 40,
-                        color: FFAppState().primaryBtnColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Brazila',
-                                  color: Colors.white,
-                                  useGoogleFonts: false,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ],
                 ),
-              ),
-            ],
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.network(
+                        FFAppState().logoURL,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FFButtonWidget(
+                              onPressed: () {
+                                print('Button pressed ...');
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'y0fw8o8l' /* Click here */,
+                              ),
+                              options: FFButtonOptions(
+                                width: 130,
+                                height: 40,
+                                color: FFAppState().primaryBtnColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color: Colors.white,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: StreamBuilder<List<EntitiesRecord>>(
+                    stream: queryEntitiesRecord(
+                      queryBuilder: (entitiesRecord) => entitiesRecord
+                          .where('entity_key', isEqualTo: 'burgerking'),
+                      singleRecord: true,
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: CircularProgressIndicator(
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                            ),
+                          ),
+                        );
+                      }
+                      List<EntitiesRecord> columnEntitiesRecordList =
+                          snapshot.data!;
+                      // Return an empty Container when the item does not exist.
+                      if (snapshot.data!.isEmpty) {
+                        return Container();
+                      }
+                      final columnEntitiesRecord =
+                          columnEntitiesRecordList.isNotEmpty
+                              ? columnEntitiesRecordList.first
+                              : null;
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.network(
+                            columnEntitiesRecord!.logoIcon!,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FFButtonWidget(
+                                  onPressed: () {
+                                    print('Button pressed ...');
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'hqab9gwt' /* Click here */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: 130,
+                                    height: 40,
+                                    color: FFAppState().primaryBtnColor,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Open Sans',
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

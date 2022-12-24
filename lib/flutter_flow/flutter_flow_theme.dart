@@ -86,52 +86,52 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Brazila';
-  TextStyle get title1 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.primaryText,
+  String get title1Family => 'Open Sans';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.bold,
         fontSize: 24,
       );
-  String get title2Family => 'Brazila';
-  TextStyle get title2 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.secondaryText,
+  String get title2Family => 'Open Sans';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.bold,
         fontSize: 22,
       );
-  String get title3Family => 'Brazila';
-  TextStyle get title3 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.primaryText,
+  String get title3Family => 'Open Sans';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.w600,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Brazila';
-  TextStyle get subtitle1 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.primaryText,
+  String get subtitle1Family => 'Open Sans';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.w600,
         fontSize: 18,
       );
-  String get subtitle2Family => 'Brazila';
-  TextStyle get subtitle2 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.secondaryText,
+  String get subtitle2Family => 'Open Sans';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.w500,
         fontSize: 16,
       );
-  String get bodyText1Family => 'Brazila';
-  TextStyle get bodyText1 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.primaryText,
+  String get bodyText1Family => 'Open Sans';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.normal,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Brazila';
-  TextStyle get bodyText2 => TextStyle(
-        fontFamily: 'Brazila',
-        color: theme.secondaryText,
+  String get bodyText2Family => 'Open Sans';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'Open Sans',
+        color: Colors.black,
         fontWeight: FontWeight.w300,
         fontSize: 14,
       );

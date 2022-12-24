@@ -16,9 +16,6 @@ abstract class EntitiesRecord
   @BuiltValueField(wireName: 'bg_color')
   Color? get bgColor;
 
-  @BuiltValueField(wireName: 'btn_color')
-  Color? get btnColor;
-
   @BuiltValueField(wireName: 'logo_icon')
   String? get logoIcon;
 
@@ -61,6 +58,9 @@ abstract class EntitiesRecord
   @BuiltValueField(wireName: 'entity_key')
   String? get entityKey;
 
+  @BuiltValueField(wireName: 'bg_img')
+  String? get bgImg;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -72,7 +72,8 @@ abstract class EntitiesRecord
     ..appTagLine = ''
     ..customId = 0
     ..languageCode = ''
-    ..entityKey = '';
+    ..entityKey = ''
+    ..bgImg = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('entities');
@@ -98,7 +99,6 @@ abstract class EntitiesRecord
 Map<String, dynamic> createEntitiesRecordData({
   String? name,
   Color? bgColor,
-  Color? btnColor,
   String? logoIcon,
   String? appTitle,
   Color? appTitleColor,
@@ -113,6 +113,7 @@ Map<String, dynamic> createEntitiesRecordData({
   DateTime? createdAt,
   String? languageCode,
   String? entityKey,
+  String? bgImg,
 }) {
   final firestoreData = serializers.toFirestore(
     EntitiesRecord.serializer,
@@ -120,7 +121,6 @@ Map<String, dynamic> createEntitiesRecordData({
       (e) => e
         ..name = name
         ..bgColor = bgColor
-        ..btnColor = btnColor
         ..logoIcon = logoIcon
         ..appTitle = appTitle
         ..appTitleColor = appTitleColor
@@ -134,7 +134,8 @@ Map<String, dynamic> createEntitiesRecordData({
         ..customId = customId
         ..createdAt = createdAt
         ..languageCode = languageCode
-        ..entityKey = entityKey,
+        ..entityKey = entityKey
+        ..bgImg = bgImg,
     ),
   );
 

@@ -162,11 +162,10 @@ class _LocationDetailWidgetState extends State<LocationDetailWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Brazila',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBtnText,
                                           fontSize: 17,
-                                          useGoogleFonts: false,
                                         ),
                                   ),
                                   Padding(
@@ -182,11 +181,10 @@ Chi... */
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Brazila',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 21,
-                                            useGoogleFonts: false,
                                           ),
                                     ),
                                   ),
@@ -207,10 +205,9 @@ Chi... */
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Brazila',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBtnText,
-                                            useGoogleFonts: false,
                                             lineHeight: 1.5,
                                           ),
                                     ),
@@ -272,12 +269,11 @@ Chi... */
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Brazila',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
                                                   fontSize: 15,
-                                                  useGoogleFonts: false,
                                                 ),
                                           ),
                                           Row(
@@ -296,9 +292,9 @@ Chi... */
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Brazila',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           fontSize: 28,
-                                                          useGoogleFonts: false,
                                                         ),
                                               ),
                                               Column(
@@ -319,12 +315,12 @@ Night */
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Brazila',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .lineColor,
                                                           fontSize: 11,
-                                                          useGoogleFonts: false,
                                                         ),
                                                   ),
                                                 ],
@@ -432,12 +428,11 @@ Night */
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
-                                    fontFamily: 'Brazila',
+                                    fontFamily: 'Open Sans',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                     fontSize: 19,
                                     fontWeight: FontWeight.normal,
-                                    useGoogleFonts: false,
                                   ),
                               borderSide: BorderSide(
                                 color: Colors.transparent,

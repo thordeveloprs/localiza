@@ -24,14 +24,8 @@ abstract class RestroDetailsRecord
   @BuiltValueField(wireName: 'entity_mapping')
   DocumentReference? get entityMapping;
 
-  @BuiltValueField(wireName: 'working_hours')
-  String? get workingHours;
-
   @BuiltValueField(wireName: 'GBP_details')
   String? get gBPDetails;
-
-  @BuiltValueField(wireName: 'list_photos')
-  BuiltList<String>? get listPhotos;
 
   String? get category;
 
@@ -40,8 +34,6 @@ abstract class RestroDetailsRecord
 
   @BuiltValueField(wireName: 'google_location')
   LatLng? get googleLocation;
-
-  int? get rating;
 
   @BuiltValueField(wireName: 'user_count')
   int? get userCount;
@@ -63,6 +55,11 @@ abstract class RestroDetailsRecord
   @BuiltValueField(wireName: 'working_hours_ref')
   DocumentReference? get workingHoursRef;
 
+  double? get rating;
+
+  @BuiltValueField(wireName: 'assigned_user')
+  DocumentReference? get assignedUser;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -72,18 +69,16 @@ abstract class RestroDetailsRecord
     ..name = ''
     ..address = ''
     ..phoneNumber = ''
-    ..workingHours = ''
     ..gBPDetails = ''
-    ..listPhotos = ListBuilder()
     ..category = ''
     ..locationWithin = ''
-    ..rating = 0
     ..userCount = 0
     ..website = ''
     ..serviceOption = ''
     ..briefDescription = ''
     ..primaryImage = ''
-    ..listOfImages = ListBuilder();
+    ..listOfImages = ListBuilder()
+    ..rating = 0.0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('restroDetails');
@@ -113,18 +108,18 @@ Map<String, dynamic> createRestroDetailsRecordData({
   String? address,
   String? phoneNumber,
   DocumentReference? entityMapping,
-  String? workingHours,
   String? gBPDetails,
   String? category,
   String? locationWithin,
   LatLng? googleLocation,
-  int? rating,
   int? userCount,
   String? website,
   String? serviceOption,
   String? briefDescription,
   String? primaryImage,
   DocumentReference? workingHoursRef,
+  double? rating,
+  DocumentReference? assignedUser,
 }) {
   final firestoreData = serializers.toFirestore(
     RestroDetailsRecord.serializer,
@@ -135,20 +130,19 @@ Map<String, dynamic> createRestroDetailsRecordData({
         ..address = address
         ..phoneNumber = phoneNumber
         ..entityMapping = entityMapping
-        ..workingHours = workingHours
         ..gBPDetails = gBPDetails
-        ..listPhotos = null
         ..category = category
         ..locationWithin = locationWithin
         ..googleLocation = googleLocation
-        ..rating = rating
         ..userCount = userCount
         ..website = website
         ..serviceOption = serviceOption
         ..briefDescription = briefDescription
         ..primaryImage = primaryImage
         ..listOfImages = null
-        ..workingHoursRef = workingHoursRef,
+        ..workingHoursRef = workingHoursRef
+        ..rating = rating
+        ..assignedUser = assignedUser,
     ),
   );
 

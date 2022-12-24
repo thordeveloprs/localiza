@@ -60,27 +60,12 @@ class _$RestroDetailsRecordSerializer
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.workingHours;
-    if (value != null) {
-      result
-        ..add('working_hours')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.gBPDetails;
     if (value != null) {
       result
         ..add('GBP_details')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
-    }
-    value = object.listPhotos;
-    if (value != null) {
-      result
-        ..add('list_photos')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.category;
     if (value != null) {
@@ -102,12 +87,6 @@ class _$RestroDetailsRecordSerializer
         ..add('google_location')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(LatLng)));
-    }
-    value = object.rating;
-    if (value != null) {
-      result
-        ..add('rating')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.userCount;
     if (value != null) {
@@ -159,6 +138,21 @@ class _$RestroDetailsRecordSerializer
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
+    value = object.rating;
+    if (value != null) {
+      result
+        ..add('rating')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.assignedUser;
+    if (value != null) {
+      result
+        ..add('assigned_user')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -204,19 +198,9 @@ class _$RestroDetailsRecordSerializer
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
-        case 'working_hours':
-          result.workingHours = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'GBP_details':
           result.gBPDetails = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'list_photos':
-          result.listPhotos.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object?>);
           break;
         case 'category':
           result.category = serializers.deserialize(value,
@@ -229,10 +213,6 @@ class _$RestroDetailsRecordSerializer
         case 'google_location':
           result.googleLocation = serializers.deserialize(value,
               specifiedType: const FullType(LatLng)) as LatLng?;
-          break;
-        case 'rating':
-          result.rating = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
           break;
         case 'user_count':
           result.userCount = serializers.deserialize(value,
@@ -266,6 +246,16 @@ class _$RestroDetailsRecordSerializer
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
+        case 'rating':
+          result.rating = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'assigned_user':
+          result.assignedUser = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -291,19 +281,13 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
   @override
   final DocumentReference<Object?>? entityMapping;
   @override
-  final String? workingHours;
-  @override
   final String? gBPDetails;
-  @override
-  final BuiltList<String>? listPhotos;
   @override
   final String? category;
   @override
   final String? locationWithin;
   @override
   final LatLng? googleLocation;
-  @override
-  final int? rating;
   @override
   final int? userCount;
   @override
@@ -319,6 +303,10 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
   @override
   final DocumentReference<Object?>? workingHoursRef;
   @override
+  final double? rating;
+  @override
+  final DocumentReference<Object?>? assignedUser;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$RestroDetailsRecord(
@@ -331,13 +319,10 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
       this.address,
       this.phoneNumber,
       this.entityMapping,
-      this.workingHours,
       this.gBPDetails,
-      this.listPhotos,
       this.category,
       this.locationWithin,
       this.googleLocation,
-      this.rating,
       this.userCount,
       this.website,
       this.serviceOption,
@@ -345,6 +330,8 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
       this.primaryImage,
       this.listOfImages,
       this.workingHoursRef,
+      this.rating,
+      this.assignedUser,
       this.ffRef})
       : super._();
 
@@ -366,13 +353,10 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
         address == other.address &&
         phoneNumber == other.phoneNumber &&
         entityMapping == other.entityMapping &&
-        workingHours == other.workingHours &&
         gBPDetails == other.gBPDetails &&
-        listPhotos == other.listPhotos &&
         category == other.category &&
         locationWithin == other.locationWithin &&
         googleLocation == other.googleLocation &&
-        rating == other.rating &&
         userCount == other.userCount &&
         website == other.website &&
         serviceOption == other.serviceOption &&
@@ -380,6 +364,8 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
         primaryImage == other.primaryImage &&
         listOfImages == other.listOfImages &&
         workingHoursRef == other.workingHoursRef &&
+        rating == other.rating &&
+        assignedUser == other.assignedUser &&
         ffRef == other.ffRef;
   }
 
@@ -404,34 +390,31 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
                                                                     $jc(
                                                                         $jc(
                                                                             $jc(
-                                                                                $jc(
-                                                                                    0,
-                                                                                    cutomId
-                                                                                        .hashCode),
-                                                                                name
+                                                                                0,
+                                                                                cutomId
                                                                                     .hashCode),
-                                                                            address
+                                                                            name
                                                                                 .hashCode),
-                                                                        phoneNumber
+                                                                        address
                                                                             .hashCode),
-                                                                    entityMapping
+                                                                    phoneNumber
                                                                         .hashCode),
-                                                                workingHours
+                                                                entityMapping
                                                                     .hashCode),
                                                             gBPDetails
                                                                 .hashCode),
-                                                        listPhotos.hashCode),
-                                                    category.hashCode),
-                                                locationWithin.hashCode),
-                                            googleLocation.hashCode),
-                                        rating.hashCode),
-                                    userCount.hashCode),
-                                website.hashCode),
-                            serviceOption.hashCode),
-                        briefDescription.hashCode),
-                    primaryImage.hashCode),
-                listOfImages.hashCode),
-            workingHoursRef.hashCode),
+                                                        category.hashCode),
+                                                    locationWithin.hashCode),
+                                                googleLocation.hashCode),
+                                            userCount.hashCode),
+                                        website.hashCode),
+                                    serviceOption.hashCode),
+                                briefDescription.hashCode),
+                            primaryImage.hashCode),
+                        listOfImages.hashCode),
+                    workingHoursRef.hashCode),
+                rating.hashCode),
+            assignedUser.hashCode),
         ffRef.hashCode));
   }
 
@@ -443,13 +426,10 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
           ..add('address', address)
           ..add('phoneNumber', phoneNumber)
           ..add('entityMapping', entityMapping)
-          ..add('workingHours', workingHours)
           ..add('gBPDetails', gBPDetails)
-          ..add('listPhotos', listPhotos)
           ..add('category', category)
           ..add('locationWithin', locationWithin)
           ..add('googleLocation', googleLocation)
-          ..add('rating', rating)
           ..add('userCount', userCount)
           ..add('website', website)
           ..add('serviceOption', serviceOption)
@@ -457,6 +437,8 @@ class _$RestroDetailsRecord extends RestroDetailsRecord {
           ..add('primaryImage', primaryImage)
           ..add('listOfImages', listOfImages)
           ..add('workingHoursRef', workingHoursRef)
+          ..add('rating', rating)
+          ..add('assignedUser', assignedUser)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -487,19 +469,9 @@ class RestroDetailsRecordBuilder
   set entityMapping(DocumentReference<Object?>? entityMapping) =>
       _$this._entityMapping = entityMapping;
 
-  String? _workingHours;
-  String? get workingHours => _$this._workingHours;
-  set workingHours(String? workingHours) => _$this._workingHours = workingHours;
-
   String? _gBPDetails;
   String? get gBPDetails => _$this._gBPDetails;
   set gBPDetails(String? gBPDetails) => _$this._gBPDetails = gBPDetails;
-
-  ListBuilder<String>? _listPhotos;
-  ListBuilder<String> get listPhotos =>
-      _$this._listPhotos ??= new ListBuilder<String>();
-  set listPhotos(ListBuilder<String>? listPhotos) =>
-      _$this._listPhotos = listPhotos;
 
   String? _category;
   String? get category => _$this._category;
@@ -514,10 +486,6 @@ class RestroDetailsRecordBuilder
   LatLng? get googleLocation => _$this._googleLocation;
   set googleLocation(LatLng? googleLocation) =>
       _$this._googleLocation = googleLocation;
-
-  int? _rating;
-  int? get rating => _$this._rating;
-  set rating(int? rating) => _$this._rating = rating;
 
   int? _userCount;
   int? get userCount => _$this._userCount;
@@ -552,6 +520,15 @@ class RestroDetailsRecordBuilder
   set workingHoursRef(DocumentReference<Object?>? workingHoursRef) =>
       _$this._workingHoursRef = workingHoursRef;
 
+  double? _rating;
+  double? get rating => _$this._rating;
+  set rating(double? rating) => _$this._rating = rating;
+
+  DocumentReference<Object?>? _assignedUser;
+  DocumentReference<Object?>? get assignedUser => _$this._assignedUser;
+  set assignedUser(DocumentReference<Object?>? assignedUser) =>
+      _$this._assignedUser = assignedUser;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -568,13 +545,10 @@ class RestroDetailsRecordBuilder
       _address = $v.address;
       _phoneNumber = $v.phoneNumber;
       _entityMapping = $v.entityMapping;
-      _workingHours = $v.workingHours;
       _gBPDetails = $v.gBPDetails;
-      _listPhotos = $v.listPhotos?.toBuilder();
       _category = $v.category;
       _locationWithin = $v.locationWithin;
       _googleLocation = $v.googleLocation;
-      _rating = $v.rating;
       _userCount = $v.userCount;
       _website = $v.website;
       _serviceOption = $v.serviceOption;
@@ -582,6 +556,8 @@ class RestroDetailsRecordBuilder
       _primaryImage = $v.primaryImage;
       _listOfImages = $v.listOfImages?.toBuilder();
       _workingHoursRef = $v.workingHoursRef;
+      _rating = $v.rating;
+      _assignedUser = $v.assignedUser;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -612,13 +588,10 @@ class RestroDetailsRecordBuilder
               address: address,
               phoneNumber: phoneNumber,
               entityMapping: entityMapping,
-              workingHours: workingHours,
               gBPDetails: gBPDetails,
-              listPhotos: _listPhotos?.build(),
               category: category,
               locationWithin: locationWithin,
               googleLocation: googleLocation,
-              rating: rating,
               userCount: userCount,
               website: website,
               serviceOption: serviceOption,
@@ -626,13 +599,12 @@ class RestroDetailsRecordBuilder
               primaryImage: primaryImage,
               listOfImages: _listOfImages?.build(),
               workingHoursRef: workingHoursRef,
+              rating: rating,
+              assignedUser: assignedUser,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'listPhotos';
-        _listPhotos?.build();
-
         _$failedField = 'listOfImages';
         _listOfImages?.build();
       } catch (e) {

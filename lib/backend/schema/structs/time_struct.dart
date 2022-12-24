@@ -9,25 +9,31 @@ part 'time_struct.g.dart';
 abstract class TimeStruct implements Built<TimeStruct, TimeStructBuilder> {
   static Serializer<TimeStruct> get serializer => _$timeStructSerializer;
 
-  @BuiltValueField(wireName: 'start_time')
-  DateTime? get startTime;
+  @BuiltValueField(wireName: 'start_hour')
+  String? get startHour;
 
-  @BuiltValueField(wireName: 'end_time')
-  DateTime? get endTime;
+  @BuiltValueField(wireName: 'end_hour')
+  String? get endHour;
+
+  String? get otherInfo;
 
   /// Utility class for Firestore updates
   FirestoreUtilData get firestoreUtilData;
 
-  static void _initializeBuilder(TimeStructBuilder builder) =>
-      builder..firestoreUtilData = FirestoreUtilData();
+  static void _initializeBuilder(TimeStructBuilder builder) => builder
+    ..startHour = ''
+    ..endHour = ''
+    ..otherInfo = ''
+    ..firestoreUtilData = FirestoreUtilData();
 
   TimeStruct._();
   factory TimeStruct([void Function(TimeStructBuilder) updates]) = _$TimeStruct;
 }
 
 TimeStruct createTimeStruct({
-  DateTime? startTime,
-  DateTime? endTime,
+  String? startHour,
+  String? endHour,
+  String? otherInfo,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -35,8 +41,9 @@ TimeStruct createTimeStruct({
 }) =>
     TimeStruct(
       (t) => t
-        ..startTime = startTime
-        ..endTime = endTime
+        ..startHour = startHour
+        ..endHour = endHour
+        ..otherInfo = otherInfo
         ..firestoreUtilData = FirestoreUtilData(
           clearUnsetFields: clearUnsetFields,
           create: create,

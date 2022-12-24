@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/nav_bar_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -170,6 +171,7 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
     ),
   };
   TextEditingController? textFieldSearchController;
+  final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -188,6 +190,7 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
 
   @override
   void dispose() {
+    _unfocusNode.dispose();
     textFieldSearchController?.dispose();
     super.dispose();
   }
@@ -200,7 +203,7 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
       key: scaffoldKey,
       backgroundColor: Color(0xFF0A2540),
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -220,46 +223,47 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              StreamBuilder<List<UsersRecord>>(
-                                stream: queryUsersRecord(
-                                  singleRecord: true,
+                              AuthUserStreamWidget(
+                                child: StreamBuilder<List<UsersRecord>>(
+                                  stream: queryUsersRecord(
+                                    singleRecord: true,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<UsersRecord> textUsersRecordList =
+                                        snapshot.data!;
+                                    // Return an empty Container when the item does not exist.
+                                    if (snapshot.data!.isEmpty) {
+                                      return Container();
+                                    }
+                                    final textUsersRecord =
+                                        textUsersRecordList.isNotEmpty
+                                            ? textUsersRecordList.first
+                                            : null;
+                                    return Text(
+                                      'Hi, ${currentUserDisplayName}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            fontSize: 24,
+                                          ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'textOnPageLoadAnimation']!);
+                                  },
                                 ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<UsersRecord> textUsersRecordList =
-                                      snapshot.data!;
-                                  // Return an empty Container when the item does not exist.
-                                  if (snapshot.data!.isEmpty) {
-                                    return Container();
-                                  }
-                                  final textUsersRecord =
-                                      textUsersRecordList.isNotEmpty
-                                          ? textUsersRecordList.first
-                                          : null;
-                                  return Text(
-                                    'Hi, ${textUsersRecord!.userFirstName}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Brazila',
-                                          fontSize: 24,
-                                          useGoogleFonts: false,
-                                        ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'textOnPageLoadAnimation']!);
-                                },
                               ),
                             ],
                           ),
@@ -275,11 +279,10 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Brazila',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 19,
-                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ],
@@ -386,12 +389,11 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Brazila',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
                                                 fontSize: 15,
-                                                useGoogleFonts: false,
                                               ),
                                         ),
                                       ),
@@ -447,12 +449,11 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Brazila',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .lineColor,
                                               fontSize: 14,
-                                              useGoogleFonts: false,
                                             ),
                                       ),
                                     ),
@@ -502,10 +503,9 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Brazila',
+                                                  fontFamily: 'Open Sans',
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: false,
                                                 ),
                                           );
                                         },
@@ -558,9 +558,8 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Brazila',
+                                                  fontFamily: 'Open Sans',
                                                   fontSize: 16,
-                                                  useGoogleFonts: false,
                                                 ),
                                           );
                                         },
@@ -612,9 +611,8 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Brazila',
+                                                  fontFamily: 'Open Sans',
                                                   fontSize: 16,
-                                                  useGoogleFonts: false,
                                                 ),
                                           );
                                         },
@@ -629,11 +627,10 @@ class _LocationListCopyWidgetState extends State<LocationListCopyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Brazila',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBtnText,
                                         fontSize: 13,
-                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ],

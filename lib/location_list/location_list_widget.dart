@@ -169,6 +169,7 @@ class _LocationListWidgetState extends State<LocationListWidget>
     ),
   };
   TextEditingController? textFieldSearchController;
+  final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -187,6 +188,7 @@ class _LocationListWidgetState extends State<LocationListWidget>
 
   @override
   void dispose() {
+    _unfocusNode.dispose();
     textFieldSearchController?.dispose();
     super.dispose();
   }
@@ -199,7 +201,7 @@ class _LocationListWidgetState extends State<LocationListWidget>
       key: scaffoldKey,
       backgroundColor: Color(0xFF0A2540),
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -226,9 +228,8 @@ class _LocationListWidgetState extends State<LocationListWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Brazila',
+                                      fontFamily: 'Open Sans',
                                       fontSize: 24,
-                                      useGoogleFonts: false,
                                     ),
                               ).animateOnPageLoad(
                                   animationsMap['textOnPageLoadAnimation']!),
@@ -246,11 +247,10 @@ class _LocationListWidgetState extends State<LocationListWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Brazila',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 19,
-                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ],
@@ -357,12 +357,11 @@ class _LocationListWidgetState extends State<LocationListWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Brazila',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
                                                 fontSize: 15,
-                                                useGoogleFonts: false,
                                               ),
                                         ),
                                       ),
@@ -415,11 +414,10 @@ class _LocationListWidgetState extends State<LocationListWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Brazila',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .lineColor,
                                             fontSize: 15,
-                                            useGoogleFonts: false,
                                           ),
                                     ),
                                     Padding(
@@ -434,9 +432,8 @@ class _LocationListWidgetState extends State<LocationListWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Brazila',
+                                              fontFamily: 'Open Sans',
                                               fontSize: 21,
-                                              useGoogleFonts: false,
                                             ),
                                       ),
                                     ),
@@ -449,11 +446,10 @@ class _LocationListWidgetState extends State<LocationListWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Brazila',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBtnText,
                                         fontSize: 13,
-                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ],

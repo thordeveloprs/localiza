@@ -35,13 +35,6 @@ class _$EntitiesRecordSerializer
         ..add(
             serializers.serialize(value, specifiedType: const FullType(Color)));
     }
-    value = object.btnColor;
-    if (value != null) {
-      result
-        ..add('btn_color')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(Color)));
-    }
     value = object.logoIcon;
     if (value != null) {
       result
@@ -139,6 +132,13 @@ class _$EntitiesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.bgImg;
+    if (value != null) {
+      result
+        ..add('bg_img')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -168,10 +168,6 @@ class _$EntitiesRecordSerializer
           break;
         case 'bg_color':
           result.bgColor = serializers.deserialize(value,
-              specifiedType: const FullType(Color)) as Color?;
-          break;
-        case 'btn_color':
-          result.btnColor = serializers.deserialize(value,
               specifiedType: const FullType(Color)) as Color?;
           break;
         case 'logo_icon':
@@ -230,6 +226,10 @@ class _$EntitiesRecordSerializer
           result.entityKey = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'bg_img':
+          result.bgImg = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -248,8 +248,6 @@ class _$EntitiesRecord extends EntitiesRecord {
   final String? name;
   @override
   final Color? bgColor;
-  @override
-  final Color? btnColor;
   @override
   final String? logoIcon;
   @override
@@ -279,6 +277,8 @@ class _$EntitiesRecord extends EntitiesRecord {
   @override
   final String? entityKey;
   @override
+  final String? bgImg;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$EntitiesRecord([void Function(EntitiesRecordBuilder)? updates]) =>
@@ -287,7 +287,6 @@ class _$EntitiesRecord extends EntitiesRecord {
   _$EntitiesRecord._(
       {this.name,
       this.bgColor,
-      this.btnColor,
       this.logoIcon,
       this.appTitle,
       this.appTitleColor,
@@ -302,6 +301,7 @@ class _$EntitiesRecord extends EntitiesRecord {
       this.createdAt,
       this.languageCode,
       this.entityKey,
+      this.bgImg,
       this.ffRef})
       : super._();
 
@@ -319,7 +319,6 @@ class _$EntitiesRecord extends EntitiesRecord {
     return other is EntitiesRecord &&
         name == other.name &&
         bgColor == other.bgColor &&
-        btnColor == other.btnColor &&
         logoIcon == other.logoIcon &&
         appTitle == other.appTitle &&
         appTitleColor == other.appTitleColor &&
@@ -334,6 +333,7 @@ class _$EntitiesRecord extends EntitiesRecord {
         createdAt == other.createdAt &&
         languageCode == other.languageCode &&
         entityKey == other.entityKey &&
+        bgImg == other.bgImg &&
         ffRef == other.ffRef;
   }
 
@@ -362,23 +362,24 @@ class _$EntitiesRecord extends EntitiesRecord {
                                                                                 .hashCode),
                                                                         bgColor
                                                                             .hashCode),
-                                                                    btnColor
+                                                                    logoIcon
                                                                         .hashCode),
-                                                                logoIcon
+                                                                appTitle
                                                                     .hashCode),
-                                                            appTitle.hashCode),
-                                                        appTitleColor.hashCode),
-                                                    appTagLine.hashCode),
-                                                appTagColor.hashCode),
-                                            primaryBtnColor.hashCode),
-                                        secondaryBtnColor.hashCode),
-                                    darkBgPageColor.hashCode),
-                                liveDivisionColor.hashCode),
-                            navigationIconColor.hashCode),
-                        customId.hashCode),
-                    createdAt.hashCode),
-                languageCode.hashCode),
-            entityKey.hashCode),
+                                                            appTitleColor
+                                                                .hashCode),
+                                                        appTagLine.hashCode),
+                                                    appTagColor.hashCode),
+                                                primaryBtnColor.hashCode),
+                                            secondaryBtnColor.hashCode),
+                                        darkBgPageColor.hashCode),
+                                    liveDivisionColor.hashCode),
+                                navigationIconColor.hashCode),
+                            customId.hashCode),
+                        createdAt.hashCode),
+                    languageCode.hashCode),
+                entityKey.hashCode),
+            bgImg.hashCode),
         ffRef.hashCode));
   }
 
@@ -387,7 +388,6 @@ class _$EntitiesRecord extends EntitiesRecord {
     return (newBuiltValueToStringHelper(r'EntitiesRecord')
           ..add('name', name)
           ..add('bgColor', bgColor)
-          ..add('btnColor', btnColor)
           ..add('logoIcon', logoIcon)
           ..add('appTitle', appTitle)
           ..add('appTitleColor', appTitleColor)
@@ -402,6 +402,7 @@ class _$EntitiesRecord extends EntitiesRecord {
           ..add('createdAt', createdAt)
           ..add('languageCode', languageCode)
           ..add('entityKey', entityKey)
+          ..add('bgImg', bgImg)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -418,10 +419,6 @@ class EntitiesRecordBuilder
   Color? _bgColor;
   Color? get bgColor => _$this._bgColor;
   set bgColor(Color? bgColor) => _$this._bgColor = bgColor;
-
-  Color? _btnColor;
-  Color? get btnColor => _$this._btnColor;
-  set btnColor(Color? btnColor) => _$this._btnColor = btnColor;
 
   String? _logoIcon;
   String? get logoIcon => _$this._logoIcon;
@@ -485,6 +482,10 @@ class EntitiesRecordBuilder
   String? get entityKey => _$this._entityKey;
   set entityKey(String? entityKey) => _$this._entityKey = entityKey;
 
+  String? _bgImg;
+  String? get bgImg => _$this._bgImg;
+  set bgImg(String? bgImg) => _$this._bgImg = bgImg;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -498,7 +499,6 @@ class EntitiesRecordBuilder
     if ($v != null) {
       _name = $v.name;
       _bgColor = $v.bgColor;
-      _btnColor = $v.btnColor;
       _logoIcon = $v.logoIcon;
       _appTitle = $v.appTitle;
       _appTitleColor = $v.appTitleColor;
@@ -513,6 +513,7 @@ class EntitiesRecordBuilder
       _createdAt = $v.createdAt;
       _languageCode = $v.languageCode;
       _entityKey = $v.entityKey;
+      _bgImg = $v.bgImg;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -538,7 +539,6 @@ class EntitiesRecordBuilder
         new _$EntitiesRecord._(
             name: name,
             bgColor: bgColor,
-            btnColor: btnColor,
             logoIcon: logoIcon,
             appTitle: appTitle,
             appTitleColor: appTitleColor,
@@ -553,6 +553,7 @@ class EntitiesRecordBuilder
             createdAt: createdAt,
             languageCode: languageCode,
             entityKey: entityKey,
+            bgImg: bgImg,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

@@ -12,14 +12,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SplashWidget extends StatefulWidget {
-  const SplashWidget({Key? key}) : super(key: key);
+class SplashCopyWidget extends StatefulWidget {
+  const SplashCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _SplashWidgetState createState() => _SplashWidgetState();
+  _SplashCopyWidgetState createState() => _SplashCopyWidgetState();
 }
 
-class _SplashWidgetState extends State<SplashWidget>
+class _SplashCopyWidgetState extends State<SplashCopyWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'textOnPageLoadAnimation1': AnimationInfo(
@@ -377,7 +377,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '3xm52yzz' /* Manage Locations */,
+                                                '3urmlmw1' /* Manage Locations */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -408,7 +408,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'vv720i2t' /* Atualizar os detalhes dos loca... */,
+                                                  'ycfth455' /* Atualizar os detalhes dos loca... */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -450,7 +450,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'pou4j8j4' /* Entrar */,
+                                                '2c5g8qyl' /* Entrar */,
                                               ),
                                               options: FFButtonOptions(
                                                 width: 130,
@@ -565,7 +565,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      '4dalh64i' /* Stay On Top */,
+                                                      'hce3uc42' /* Stay On Top */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -598,7 +598,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'dsywx29f' /* Find your hotel easy and trave... */,
+                                                      'dazba6y3' /* Find your hotel easy and trave... */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -644,7 +644,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'p3m03liu' /* Want to see 360 */,
+                                                      's5dkjuuc' /* Want to see 360 */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -668,7 +668,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'id2jxwjg' /* Tour */,
+                                                        'pa41652b' /* Tour */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -743,7 +743,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'axuvoxz5' /* Passion Is Key */,
+                                                'e3c4m7br' /* Passion Is Key */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -774,7 +774,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'gi3pz2fu' /* In modern world the most intre... */,
+                                                  '21xqs5c5' /* In modern world the most intre... */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -814,7 +814,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'vj5904rv' /* Login */,
+                                                'e46nvt3g' /* Login */,
                                               ),
                                               options: FFButtonOptions(
                                                 width: 130,
@@ -858,7 +858,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'raot1wxr' /* Don't have account? */,
+                                                '9po83w6h' /* Don't have account? */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -879,7 +879,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'gfk5pgkd' /* Sign up */,
+                                                  '9mysb2fc' /* Sign up */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)

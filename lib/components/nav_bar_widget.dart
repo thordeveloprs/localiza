@@ -222,7 +222,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
               child: InkWell(
                 onTap: () async {
                   if (!widget.home!) {
-                    context.goNamed('splash');
+                    context.pushNamed('splashCopy');
                   }
                 },
                 child: Stack(

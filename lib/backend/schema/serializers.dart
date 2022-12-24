@@ -3,11 +3,11 @@ import 'package:from_css_color/from_css_color.dart';
 
 import 'locations_record.dart';
 import 'reviews_record.dart';
-import 'users_record.dart';
 import 'google_images_record.dart';
 import 'entities_record.dart';
 import 'restro_details_record.dart';
 import 'working_hours_record.dart';
+import 'users_record.dart';
 
 import 'index.dart';
 
@@ -20,11 +20,11 @@ const kDocumentReferenceField = 'Document__Reference__Field';
 @SerializersFor(const [
   LocationsRecord,
   ReviewsRecord,
-  UsersRecord,
   GoogleImagesRecord,
   EntitiesRecord,
   RestroDetailsRecord,
   WorkingHoursRecord,
+  UsersRecord,
   TimeStruct,
 ])
 final Serializers serializers = (_$serializers.toBuilder()

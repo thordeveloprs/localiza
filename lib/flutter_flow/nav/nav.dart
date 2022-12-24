@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? SplashWidget() : SamplePageWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? SplashWidget() : SamplePageWidget(),
+              appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
           routes: [
             FFRoute(
               name: 'LoginSimple',
@@ -113,6 +113,49 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SamplePage',
               path: 'samplePage',
               builder: (context, params) => SamplePageWidget(),
+            ),
+            FFRoute(
+              name: 'LoginPage',
+              path: 'loginPage',
+              builder: (context, params) => LoginPageWidget(),
+            ),
+            FFRoute(
+              name: 'HomePage',
+              path: 'homePage',
+              builder: (context, params) => HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'OutletDetailsPage',
+              path: 'outletDetailsPage',
+              builder: (context, params) => OutletDetailsPageWidget(
+                restroRef: params.getParam('restroRef',
+                    ParamType.DocumentReference, false, ['restroDetails']),
+              ),
+            ),
+            FFRoute(
+              name: 'EditPage',
+              path: 'editPage',
+              builder: (context, params) => EditPageWidget(),
+            ),
+            FFRoute(
+              name: 'SignUpPage',
+              path: 'signUpPage',
+              builder: (context, params) => SignUpPageWidget(),
+            ),
+            FFRoute(
+              name: 'LoginPageCopy',
+              path: 'loginPageCopy',
+              builder: (context, params) => LoginPageCopyWidget(),
+            ),
+            FFRoute(
+              name: 'HomePageCopy',
+              path: 'homePageCopy',
+              builder: (context, params) => HomePageCopyWidget(),
+            ),
+            FFRoute(
+              name: 'splashCopy',
+              path: 'splashCopy',
+              builder: (context, params) => SplashCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -225,7 +268,7 @@ class FFParameters {
     String paramName,
     ParamType type, [
     bool isList = false,
-    String? collectionName,
+    List<String>? collectionNamePath,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -239,7 +282,7 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList, collectionName);
+    return deserializeParam<T>(param, type, isList, collectionNamePath);
   }
 }
 
@@ -272,7 +315,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/samplePage';
+            return '/loginPage';
           }
           return null;
         },

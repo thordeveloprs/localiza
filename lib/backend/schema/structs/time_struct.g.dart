@@ -23,19 +23,26 @@ class _$TimeStructSerializer implements StructuredSerializer<TimeStruct> {
           specifiedType: const FullType(FirestoreUtilData)),
     ];
     Object? value;
-    value = object.startTime;
+    value = object.startHour;
     if (value != null) {
       result
-        ..add('start_time')
+        ..add('start_hour')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
+            specifiedType: const FullType(String)));
     }
-    value = object.endTime;
+    value = object.endHour;
     if (value != null) {
       result
-        ..add('end_time')
+        ..add('end_hour')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
+            specifiedType: const FullType(String)));
+    }
+    value = object.otherInfo;
+    if (value != null) {
+      result
+        ..add('otherInfo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -51,13 +58,17 @@ class _$TimeStructSerializer implements StructuredSerializer<TimeStruct> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'start_time':
-          result.startTime = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
+        case 'start_hour':
+          result.startHour = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
-        case 'end_time':
-          result.endTime = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
+        case 'end_hour':
+          result.endHour = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'otherInfo':
+          result.otherInfo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'firestoreUtilData':
           result.firestoreUtilData = serializers.deserialize(value,
@@ -73,9 +84,11 @@ class _$TimeStructSerializer implements StructuredSerializer<TimeStruct> {
 
 class _$TimeStruct extends TimeStruct {
   @override
-  final DateTime? startTime;
+  final String? startHour;
   @override
-  final DateTime? endTime;
+  final String? endHour;
+  @override
+  final String? otherInfo;
   @override
   final FirestoreUtilData firestoreUtilData;
 
@@ -83,7 +96,10 @@ class _$TimeStruct extends TimeStruct {
       (new TimeStructBuilder()..update(updates))._build();
 
   _$TimeStruct._(
-      {this.startTime, this.endTime, required this.firestoreUtilData})
+      {this.startHour,
+      this.endHour,
+      this.otherInfo,
+      required this.firestoreUtilData})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         firestoreUtilData, r'TimeStruct', 'firestoreUtilData');
@@ -100,22 +116,26 @@ class _$TimeStruct extends TimeStruct {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is TimeStruct &&
-        startTime == other.startTime &&
-        endTime == other.endTime &&
+        startHour == other.startHour &&
+        endHour == other.endHour &&
+        otherInfo == other.otherInfo &&
         firestoreUtilData == other.firestoreUtilData;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, startTime.hashCode), endTime.hashCode),
+    return $jf($jc(
+        $jc($jc($jc(0, startHour.hashCode), endHour.hashCode),
+            otherInfo.hashCode),
         firestoreUtilData.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'TimeStruct')
-          ..add('startTime', startTime)
-          ..add('endTime', endTime)
+          ..add('startHour', startHour)
+          ..add('endHour', endHour)
+          ..add('otherInfo', otherInfo)
           ..add('firestoreUtilData', firestoreUtilData))
         .toString();
   }
@@ -124,13 +144,17 @@ class _$TimeStruct extends TimeStruct {
 class TimeStructBuilder implements Builder<TimeStruct, TimeStructBuilder> {
   _$TimeStruct? _$v;
 
-  DateTime? _startTime;
-  DateTime? get startTime => _$this._startTime;
-  set startTime(DateTime? startTime) => _$this._startTime = startTime;
+  String? _startHour;
+  String? get startHour => _$this._startHour;
+  set startHour(String? startHour) => _$this._startHour = startHour;
 
-  DateTime? _endTime;
-  DateTime? get endTime => _$this._endTime;
-  set endTime(DateTime? endTime) => _$this._endTime = endTime;
+  String? _endHour;
+  String? get endHour => _$this._endHour;
+  set endHour(String? endHour) => _$this._endHour = endHour;
+
+  String? _otherInfo;
+  String? get otherInfo => _$this._otherInfo;
+  set otherInfo(String? otherInfo) => _$this._otherInfo = otherInfo;
 
   FirestoreUtilData? _firestoreUtilData;
   FirestoreUtilData? get firestoreUtilData => _$this._firestoreUtilData;
@@ -144,8 +168,9 @@ class TimeStructBuilder implements Builder<TimeStruct, TimeStructBuilder> {
   TimeStructBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _startTime = $v.startTime;
-      _endTime = $v.endTime;
+      _startHour = $v.startHour;
+      _endHour = $v.endHour;
+      _otherInfo = $v.otherInfo;
       _firestoreUtilData = $v.firestoreUtilData;
       _$v = null;
     }
@@ -169,8 +194,9 @@ class TimeStructBuilder implements Builder<TimeStruct, TimeStructBuilder> {
   _$TimeStruct _build() {
     final _$result = _$v ??
         new _$TimeStruct._(
-            startTime: startTime,
-            endTime: endTime,
+            startHour: startHour,
+            endHour: endHour,
+            otherInfo: otherInfo,
             firestoreUtilData: BuiltValueNullFieldError.checkNotNull(
                 firestoreUtilData, r'TimeStruct', 'firestoreUtilData'));
     replace(_$result);
