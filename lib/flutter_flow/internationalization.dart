@@ -68,6 +68,37 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
+  // locationList
+  {
+    'fwr8teio': {
+      'en': 'Hi',
+      'pt': '',
+    },
+    '3yxfaort': {
+      'en': 'Select your location',
+      'pt': '',
+    },
+    'l0xrj7kv': {
+      'en': 'Search here ...',
+      'pt': '',
+    },
+    'jy5tdvz8': {
+      'en': 'Address',
+      'pt': '',
+    },
+    'zsist7a4': {
+      'en': 'Cacao Show\n123 Main Street',
+      'pt': '',
+    },
+    'twaa4kv1': {
+      'en': 'See more',
+      'pt': '',
+    },
+    'cttcpulf': {
+      'en': 'Home',
+      'pt': '',
+    },
+  },
   // LoginSimple
   {
     'sx8tqn07': {
@@ -107,37 +138,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
     'sorqs12p': {
-      'en': 'Home',
-      'pt': '',
-    },
-  },
-  // locationList
-  {
-    'fwr8teio': {
-      'en': 'Hi',
-      'pt': '',
-    },
-    '3yxfaort': {
-      'en': 'Select your location',
-      'pt': '',
-    },
-    'l0xrj7kv': {
-      'en': 'Search here ...',
-      'pt': '',
-    },
-    'jy5tdvz8': {
-      'en': 'Address',
-      'pt': '',
-    },
-    'zsist7a4': {
-      'en': 'Cacao Show\n123 Main Street',
-      'pt': '',
-    },
-    'twaa4kv1': {
-      'en': 'See more',
-      'pt': '',
-    },
-    'cttcpulf': {
       'en': 'Home',
       'pt': '',
     },

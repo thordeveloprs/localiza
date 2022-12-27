@@ -122,7 +122,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               await signOut();
 
                                               context.goNamedAuth(
-                                                  'SamplePage', mounted);
+                                                  'LoginPage', mounted);
                                             },
                                             child: Text(
                                               FFLocalizations.of(context)

@@ -64,7 +64,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                               GoRouter.of(context).prepareAuthEvent();
                               await signOut();
 
-                              context.goNamedAuth('SamplePage', mounted);
+                              context.goNamedAuth('LoginPage', mounted);
                             },
                             child: Text(
                               FFLocalizations.of(context).getText(

@@ -19,6 +19,7 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
   List<dynamic>? newList;
   DateTime? datePicked2;
   List<dynamic>? newList1;
+  List<TimeStruct>? result;
 
   @override
   void initState() {
@@ -947,34 +948,44 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                           ),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        elevation: 4,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Container(
-                          width: 100,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
+                      InkWell(
+                        onTap: () async {
+                          result = await actions.getTimeDetails(
+                            FFAppState().dayTimeList1.toList(),
+                          );
+
+                          setState(() {});
+                        },
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Color(0x009C9C9C),
-                            ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'n73jj74d' /* Save */,
+                          child: Container(
+                            width: 100,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: Color(0x009C9C9C),
+                              ),
                             ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF1B74E8),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'n73jj74d' /* Save */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFF1B74E8),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
                         ),
                       ),
