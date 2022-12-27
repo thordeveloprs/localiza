@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/actions/index.dart' as actions;
@@ -900,96 +901,126 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 30),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                        child: InkWell(
-                          onTap: () async {
-                            FFAppState().update(() {
-                              FFAppState().dayTimeList1 =
-                                  FFAppState().emptyJsonList.toList();
-                            });
-                            Navigator.pop(context);
-                          },
-                          child: Material(
-                            color: Colors.transparent,
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                  child: StreamBuilder<List<WorkingHoursRecord>>(
+                    stream: queryWorkingHoursRecord(
+                      singleRecord: true,
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: CircularProgressIndicator(
+                              color: FlutterFlowTheme.of(context).primaryColor,
                             ),
-                            child: Container(
-                              width: 100,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Color(0x009C9C9C),
+                          ),
+                        );
+                      }
+                      List<WorkingHoursRecord> rowWorkingHoursRecordList =
+                          snapshot.data!;
+                      // Return an empty Container when the item does not exist.
+                      if (snapshot.data!.isEmpty) {
+                        return Container();
+                      }
+                      final rowWorkingHoursRecord =
+                          rowWorkingHoursRecordList.isNotEmpty
+                              ? rowWorkingHoursRecordList.first
+                              : null;
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                            child: InkWell(
+                              onTap: () async {
+                                FFAppState().update(() {
+                                  FFAppState().dayTimeList1 =
+                                      FFAppState().emptyJsonList.toList();
+                                });
+                                Navigator.pop(context);
+                              },
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '62lfqku2' /* Cancel */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF1B74E8),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
+                                child: Container(
+                                  width: 100,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: Color(0x009C9C9C),
                                     ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          result = await actions.getTimeDetails(
-                            FFAppState().dayTimeList1.toList(),
-                          );
-
-                          setState(() {});
-                        },
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Container(
-                            width: 100,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: Color(0x009C9C9C),
-                              ),
-                            ),
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'n73jj74d' /* Save */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF1B74E8),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
                                   ),
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '62lfqku2' /* Cancel */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: Color(0xFF1B74E8),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ],
+                          InkWell(
+                            onTap: () async {
+                              result = await actions.getTimeDetails(
+                                FFAppState().dayTimeList1.toList(),
+                              );
+
+                              setState(() {});
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 4,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                width: 100,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Color(0x009C9C9C),
+                                  ),
+                                ),
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'n73jj74d' /* Save */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF1B74E8),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
               ],
