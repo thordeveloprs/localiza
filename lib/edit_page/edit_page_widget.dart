@@ -1,3 +1,4 @@
+import '../components/hours_widget.dart';
 import '../components/new_nav_bar_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_static_map.dart';
@@ -5,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/lat_lng.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mapbox_search/mapbox_search.dart';
@@ -22,15 +24,19 @@ class _EditPageWidgetState extends State<EditPageWidget> {
   TextEditingController? textController1;
   TextEditingController? textController2;
   TextEditingController? textController3;
+  TextEditingController? textController4;
+  TextEditingController? textController5;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
+    textController1 = TextEditingController(text: FFAppState().name);
+    textController2 = TextEditingController(text: FFAppState().address);
+    textController3 = TextEditingController(text: FFAppState().locationWithin);
+    textController4 = TextEditingController(text: FFAppState().contact);
+    textController5 = TextEditingController(text: FFAppState().webSite);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -40,6 +46,8 @@ class _EditPageWidgetState extends State<EditPageWidget> {
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
+    textController4?.dispose();
+    textController5?.dispose();
     super.dispose();
   }
 
@@ -161,6 +169,17 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                                   15, 0, 0, 0),
                                           child: TextFormField(
                                             controller: textController1,
+                                            onChanged: (_) =>
+                                                EasyDebounce.debounce(
+                                              'textController1',
+                                              Duration(milliseconds: 2000),
+                                              () async {
+                                                FFAppState().update(() {
+                                                  FFAppState().name =
+                                                      textController1!.text;
+                                                });
+                                              },
+                                            ),
                                             autofocus: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
@@ -318,6 +337,17 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                         ),
                                         child: TextFormField(
                                           controller: textController2,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            'textController2',
+                                            Duration(milliseconds: 2000),
+                                            () async {
+                                              FFAppState().update(() {
+                                                FFAppState().address =
+                                                    textController2!.text;
+                                              });
+                                            },
+                                          ),
                                           autofocus: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -405,7 +435,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                           children: [
                                             FlutterFlowStaticMap(
                                               location:
-                                                  LatLng(26.90731, 75.805238),
+                                                  FFAppState().mapLocation!,
                                               apiKey:
                                                   'pk.eyJ1IjoidGVhbWZmIiwiYSI6ImNsYndnYW9sdDF1Zmwzb250Y2RudWdhNnYifQ.7hxMpq_BG-wI4A1CYkNmQw',
                                               style: MapBoxStyle.Light,
@@ -517,6 +547,17 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                         ),
                                         child: TextFormField(
                                           controller: textController3,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            'textController3',
+                                            Duration(milliseconds: 2000),
+                                            () async {
+                                              FFAppState().update(() {
+                                                FFAppState().locationWithin =
+                                                    textController3!.text;
+                                              });
+                                            },
+                                          ),
                                           autofocus: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -631,13 +672,158 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
                                             children: [
-                                              Icon(
-                                                Icons.keyboard_arrow_right,
-                                                color: Colors.black,
-                                                size: 26,
+                                              InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                                context)
+                                                            .viewInsets,
+                                                        child: Container(
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              1,
+                                                          child: HoursWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                },
+                                                child: Icon(
+                                                  Icons.keyboard_arrow_right,
+                                                  color: Colors.black,
+                                                  size: 26,
+                                                ),
                                               ),
                                             ],
                                           ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0, 15, 0, 10),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'ybl1v7iv' /* Contact */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        width: 100,
+                                        height: 55,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          border: Border.all(
+                                            color: Color(0x009C9C9C),
+                                          ),
+                                        ),
+                                        child: TextFormField(
+                                          controller: textController4,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            'textController4',
+                                            Duration(milliseconds: 2000),
+                                            () async {
+                                              FFAppState().update(() {
+                                                FFAppState().contact =
+                                                    textController4!.text;
+                                              });
+                                            },
+                                          ),
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'h6q7v8wb' /* Phone Number */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF9C9C9C),
+                                                    ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF9C9C9C),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF9C9C9C),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            suffixIcon: Icon(
+                                              Icons.cancel_outlined,
+                                              color: Color(0xFF757575),
+                                              size: 22,
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
                                         ),
                                       ),
                                     ),
@@ -649,79 +835,200 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 10, 0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 1,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Container(
-                                          width: 100,
-                                          height: 40,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                              color: Color(0x009C9C9C),
-                                            ),
-                                          ),
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'ru5zrrs9' /* Cancel */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Open Sans',
-                                                  color: Color(0xFF1B74E8),
-                                                  fontSize: 16,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      elevation: 1,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
+                                    Expanded(
                                       child: Container(
                                         width: 100,
-                                        height: 40,
+                                        height: 55,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                              BorderRadius.circular(5),
                                           border: Border.all(
                                             color: Color(0x009C9C9C),
                                           ),
                                         ),
-                                        alignment: AlignmentDirectional(0, 0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'k0q7ot5l' /* Submit */,
+                                        child: TextFormField(
+                                          controller: textController5,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            'textController5',
+                                            Duration(milliseconds: 2000),
+                                            () async {
+                                              FFAppState().update(() {
+                                                FFAppState().webSite =
+                                                    textController5!.text;
+                                              });
+                                            },
+                                          ),
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '9wwd28u4' /* Website */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF9C9C9C),
+                                                    ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF9C9C9C),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF9C9C9C),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            suffixIcon: Icon(
+                                              Icons.cancel_outlined,
+                                              color: Color(0xFF757575),
+                                              size: 22,
+                                            ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Open Sans',
-                                                color: Color(0xFF1B74E8),
-                                                fontSize: 16,
-                                              ),
+                                              .bodyText1,
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 5),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'u1j6bu2w' /* Place photos */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 20),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'kgjvubez' /* Add helpful photos like storef... */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Color(0xFF424242),
+                                            fontSize: 16,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 20),
+                                    child: Container(
+                                      width: 150,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(16),
+                                        border: Border.all(
+                                          color: Color(0xFF9F9F9F),
+                                          width: 2,
+                                        ),
+                                      ),
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Icon(
+                                            Icons.add_a_photo_outlined,
+                                            color: Color(0xFF1A73E8),
+                                            size: 24,
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'u6b4u7xu' /* Add a Photo */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: Color(0xFF424242),
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 20),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        '83dnzy6b' /* If you add photos, they will a... */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Color(0xFF424242),
+                                            fontSize: 16,
+                                          ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -730,6 +1037,76 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                     ),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                        width: 100,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Color(0x009C9C9C),
+                          ),
+                        ),
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'j8b379re' /* Cancel */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFF1B74E8),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Container(
+                      width: 100,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x009C9C9C),
+                        ),
+                      ),
+                      alignment: AlignmentDirectional(0, 0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'aju7px8k' /* Submit */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Roboto',
+                              color: Color(0xFF1B74E8),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               NewNavBarWidget(),
             ],

@@ -71,6 +71,13 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                   DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
+    value = object.themeKey;
+    if (value != null) {
+      result
+        ..add('theme_key')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -124,6 +131,10 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                     DocumentReference, const [const FullType.nullable(Object)])
               ]))! as BuiltList<Object?>);
           break;
+        case 'theme_key':
+          result.themeKey = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -153,6 +164,8 @@ class _$UsersRecord extends UsersRecord {
   @override
   final BuiltList<DocumentReference<Object?>>? restroListRef;
   @override
+  final String? themeKey;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -166,6 +179,7 @@ class _$UsersRecord extends UsersRecord {
       this.createdTime,
       this.phoneNumber,
       this.restroListRef,
+      this.themeKey,
       this.ffRef})
       : super._();
 
@@ -187,6 +201,7 @@ class _$UsersRecord extends UsersRecord {
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
         restroListRef == other.restroListRef &&
+        themeKey == other.themeKey &&
         ffRef == other.ffRef;
   }
 
@@ -197,12 +212,16 @@ class _$UsersRecord extends UsersRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
-                            photoUrl.hashCode),
-                        uid.hashCode),
-                    createdTime.hashCode),
-                phoneNumber.hashCode),
-            restroListRef.hashCode),
+                        $jc(
+                            $jc(
+                                $jc($jc(0, email.hashCode),
+                                    displayName.hashCode),
+                                photoUrl.hashCode),
+                            uid.hashCode),
+                        createdTime.hashCode),
+                    phoneNumber.hashCode),
+                restroListRef.hashCode),
+            themeKey.hashCode),
         ffRef.hashCode));
   }
 
@@ -216,6 +235,7 @@ class _$UsersRecord extends UsersRecord {
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
           ..add('restroListRef', restroListRef)
+          ..add('themeKey', themeKey)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -254,6 +274,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   set restroListRef(ListBuilder<DocumentReference<Object?>>? restroListRef) =>
       _$this._restroListRef = restroListRef;
 
+  String? _themeKey;
+  String? get themeKey => _$this._themeKey;
+  set themeKey(String? themeKey) => _$this._themeKey = themeKey;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -272,6 +296,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
       _restroListRef = $v.restroListRef?.toBuilder();
+      _themeKey = $v.themeKey;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -304,6 +329,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
               createdTime: createdTime,
               phoneNumber: phoneNumber,
               restroListRef: _restroListRef?.build(),
+              themeKey: themeKey,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

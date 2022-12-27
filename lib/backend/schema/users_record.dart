@@ -28,6 +28,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   @BuiltValueField(wireName: 'restro_list_ref')
   BuiltList<DocumentReference>? get restroListRef;
 
+  @BuiltValueField(wireName: 'theme_key')
+  String? get themeKey;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -38,7 +41,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..photoUrl = ''
     ..uid = ''
     ..phoneNumber = ''
-    ..restroListRef = ListBuilder();
+    ..restroListRef = ListBuilder()
+    ..themeKey = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -68,6 +72,7 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  String? themeKey,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -79,7 +84,8 @@ Map<String, dynamic> createUsersRecordData({
         ..uid = uid
         ..createdTime = createdTime
         ..phoneNumber = phoneNumber
-        ..restroListRef = null,
+        ..restroListRef = null
+        ..themeKey = themeKey,
     ),
   );
 

@@ -1,3 +1,4 @@
+import '../components/edit_day_and_time_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -104,8 +105,8 @@ class _HoursWidgetState extends State<HoursWidget> {
                           ),
                           Image.network(
                             'http://cdn.onlinewebfonts.com/svg/img_255487.png',
-                            width: 18,
-                            height: 18,
+                            width: 17,
+                            height: 17,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -264,10 +265,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = true;
+                                              FFAppState().isMonday = false;
+                                              FFAppState().isTuesday = false;
+                                              FFAppState().isWednesday = false;
+                                              FFAppState().isThursday = false;
+                                              FFAppState().isFriday = false;
+                                              FFAppState().isSaturday = false;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -314,10 +351,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = false;
+                                              FFAppState().isMonday = true;
+                                              FFAppState().isTuesday = false;
+                                              FFAppState().isWednesday = false;
+                                              FFAppState().isThursday = false;
+                                              FFAppState().isFriday = false;
+                                              FFAppState().isSaturday = false;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -364,10 +437,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = false;
+                                              FFAppState().isMonday = false;
+                                              FFAppState().isTuesday = true;
+                                              FFAppState().isWednesday = false;
+                                              FFAppState().isThursday = false;
+                                              FFAppState().isFriday = false;
+                                              FFAppState().isSaturday = false;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -414,10 +523,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = false;
+                                              FFAppState().isMonday = false;
+                                              FFAppState().isTuesday = false;
+                                              FFAppState().isWednesday = true;
+                                              FFAppState().isThursday = false;
+                                              FFAppState().isFriday = false;
+                                              FFAppState().isSaturday = false;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -464,10 +609,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = false;
+                                              FFAppState().isMonday = false;
+                                              FFAppState().isTuesday = false;
+                                              FFAppState().isWednesday = false;
+                                              FFAppState().isThursday = true;
+                                              FFAppState().isFriday = false;
+                                              FFAppState().isSaturday = false;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -514,10 +695,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = false;
+                                              FFAppState().isMonday = false;
+                                              FFAppState().isTuesday = false;
+                                              FFAppState().isWednesday = false;
+                                              FFAppState().isThursday = false;
+                                              FFAppState().isFriday = true;
+                                              FFAppState().isSaturday = false;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -564,10 +781,46 @@ class _HoursWidgetState extends State<HoursWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: Color(0xFF424242),
-                                          size: 24,
+                                        InkWell(
+                                          onTap: () async {
+                                            FFAppState().update(() {
+                                              FFAppState().isSunday = false;
+                                              FFAppState().isMonday = false;
+                                              FFAppState().isTuesday = false;
+                                              FFAppState().isWednesday = false;
+                                              FFAppState().isThursday = false;
+                                              FFAppState().isFriday = false;
+                                              FFAppState().isSaturday = true;
+                                            });
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                    child:
+                                                        EditDayAndTimeWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: Color(0xFF424242),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -582,85 +835,187 @@ class _HoursWidgetState extends State<HoursWidget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.27,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                        border: Border.all(
-                                          color: Color(0xFF9F9F9F),
-                                          width: 2,
+                                    InkWell(
+                                      onTap: () async {
+                                        FFAppState().update(() {
+                                          FFAppState().isSunday = true;
+                                          FFAppState().isMonday = true;
+                                          FFAppState().isTuesday = true;
+                                          FFAppState().isWednesday = true;
+                                          FFAppState().isThursday = true;
+                                          FFAppState().isFriday = true;
+                                          FFAppState().isSaturday = true;
+                                        });
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.of(context)
+                                                  .viewInsets,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    1,
+                                                child: EditDayAndTimeWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.27,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          border: Border.all(
+                                            color: Color(0xFF9F9F9F),
+                                            width: 2,
+                                          ),
                                         ),
-                                      ),
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '1xfb62h7' /* Edit All hours */,
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '1xfb62h7' /* Edit All hours */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF424242),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0xFF424242),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.normal,
-                                            ),
                                       ),
                                     ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.27,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                        border: Border.all(
-                                          color: Color(0xFF9F9F9F),
-                                          width: 2,
+                                    InkWell(
+                                      onTap: () async {
+                                        FFAppState().update(() {
+                                          FFAppState().isSunday = false;
+                                          FFAppState().isMonday = true;
+                                          FFAppState().isTuesday = true;
+                                          FFAppState().isWednesday = true;
+                                          FFAppState().isThursday = true;
+                                          FFAppState().isFriday = true;
+                                          FFAppState().isSaturday = true;
+                                        });
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.of(context)
+                                                  .viewInsets,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    1,
+                                                child: EditDayAndTimeWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.27,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          border: Border.all(
+                                            color: Color(0xFF9F9F9F),
+                                            width: 2,
+                                          ),
                                         ),
-                                      ),
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '5r1tohgb' /* Edit Mon-Sat */,
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '5r1tohgb' /* Edit Mon-Sat */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF424242),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0xFF424242),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.normal,
-                                            ),
                                       ),
                                     ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.27,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                        border: Border.all(
-                                          color: Color(0xFF9F9F9F),
-                                          width: 2,
+                                    InkWell(
+                                      onTap: () async {
+                                        FFAppState().update(() {
+                                          FFAppState().isSunday = true;
+                                          FFAppState().isMonday = false;
+                                          FFAppState().isTuesday = false;
+                                          FFAppState().isWednesday = false;
+                                          FFAppState().isThursday = false;
+                                          FFAppState().isFriday = false;
+                                          FFAppState().isSaturday = false;
+                                        });
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.of(context)
+                                                  .viewInsets,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    1,
+                                                child: EditDayAndTimeWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.27,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          border: Border.all(
+                                            color: Color(0xFF9F9F9F),
+                                            width: 2,
+                                          ),
                                         ),
-                                      ),
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'f2kjfu5h' /* Edit Sunday */,
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'f2kjfu5h' /* Edit Sunday */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF424242),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0xFF424242),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.normal,
-                                            ),
                                       ),
                                     ),
                                   ],

@@ -286,6 +286,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Click here',
       'pt': '',
     },
+    'a18c5puh': {
+      'en': 'Time',
+      'pt': '',
+    },
+    'utuenku7': {
+      'en': 'Hello World',
+      'pt': '',
+    },
     'tk14xaaj': {
       'en': 'Test Page',
       'pt': '',
@@ -336,10 +344,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search Here or Select Below',
       'pt': '',
     },
-    'ujc3kmtr': {
-      'en': '4.5',
-      'pt': '',
-    },
     'rehow8zh': {
       'en': '(250)',
       'pt': '',
@@ -365,10 +369,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j0dmt3dt': {
       'en': 'Edit',
-      'pt': '',
-    },
-    '8u577buh': {
-      'en': '320',
       'pt': '',
     },
     'bkq5cxze': {
@@ -429,34 +429,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pgvp8w2h': {
       'en': 'Friday',
-      'pt': '',
-    },
-    'murtc0ga': {
-      'en': '11AM-1AM',
-      'pt': '',
-    },
-    '95bjupje': {
-      'en': '11AM-10PM',
-      'pt': '',
-    },
-    'qtphk6hg': {
-      'en': 'Closed',
-      'pt': '',
-    },
-    'n9foqd40': {
-      'en': 'Closed',
-      'pt': '',
-    },
-    'hrd0earh': {
-      'en': '2-10PM',
-      'pt': '',
-    },
-    '7fcav5gz': {
-      'en': '2-10PM',
-      'pt': '',
-    },
-    'lryeqnl3': {
-      'en': '2PM-1AM',
       'pt': '',
     },
     '95x1mjp2': {
@@ -526,11 +498,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hours',
       'pt': '',
     },
-    'ru5zrrs9': {
+    'ybl1v7iv': {
+      'en': 'Contact',
+      'pt': '',
+    },
+    'h6q7v8wb': {
+      'en': 'Phone Number',
+      'pt': '',
+    },
+    '9wwd28u4': {
+      'en': 'Website',
+      'pt': '',
+    },
+    'u1j6bu2w': {
+      'en': 'Place photos',
+      'pt': '',
+    },
+    'kgjvubez': {
+      'en': 'Add helpful photos like storefronts, notices, or signs',
+      'pt': '',
+    },
+    'u6b4u7xu': {
+      'en': 'Add a Photo',
+      'pt': '',
+    },
+    '83dnzy6b': {
+      'en':
+          'If you add photos, they will appear publicly with your profile name and picture. They will appear on Google services across the web, like Maps and Search, and on third-party sites and apps that use Google services. Google may also use them to update other information about this place.',
+      'pt': '',
+    },
+    'j8b379re': {
       'en': 'Cancel',
       'pt': '',
     },
-    'k0q7ot5l': {
+    'aju7px8k': {
       'en': 'Submit',
       'pt': '',
     },
@@ -684,6 +685,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
   },
+  // testingPage
+  {
+    'v749mz1n': {
+      'en': 'Hello World',
+      'pt': '',
+    },
+    'g8flt2m5': {
+      'en': 'Button',
+      'pt': '',
+    },
+    '3z0a9mce': {
+      'en': 'Page Title',
+      'pt': '',
+    },
+    'yn8cmcdo': {
+      'en': 'Home',
+      'pt': '',
+    },
+  },
   // Hours
   {
     'va7oib4h': {
@@ -789,6 +809,138 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
     'qs7s1f5y': {
+      'en': 'Save',
+      'pt': '',
+    },
+  },
+  // EditDayAndTime
+  {
+    '46dj54ps': {
+      'en': 'Select Day & Time',
+      'pt': '',
+    },
+    'fvwelz29': {
+      'en': 'S',
+      'pt': '',
+    },
+    'puk0jjni': {
+      'en': 'M',
+      'pt': '',
+    },
+    'w54n37ad': {
+      'en': 'T',
+      'pt': '',
+    },
+    'k2zyzjy2': {
+      'en': 'W',
+      'pt': '',
+    },
+    'pd43co00': {
+      'en': 'T',
+      'pt': '',
+    },
+    'v70hov9u': {
+      'en': 'F',
+      'pt': '',
+    },
+    'jnc5l6e5': {
+      'en': 'S',
+      'pt': '',
+    },
+    'n4kmzfne': {
+      'en': 'Open 24 hours',
+      'pt': '',
+    },
+    'dyvjgxik': {
+      'en': 'Closed',
+      'pt': '',
+    },
+    'u0k2a3kg': {
+      'en': 'Add hours',
+      'pt': '',
+    },
+    '62lfqku2': {
+      'en': 'Cancel',
+      'pt': '',
+    },
+    'n73jj74d': {
+      'en': 'Save',
+      'pt': '',
+    },
+  },
+  // openTime
+  {
+    '6bbmmqrf': {
+      'en': 'Open Time',
+      'pt': '',
+    },
+  },
+  // endTime
+  {
+    '0hnowol2': {
+      'en': 'Close Time',
+      'pt': '',
+    },
+  },
+  // EditDayAndTimeCopy
+  {
+    'ihzyl4mv': {
+      'en': 'Select Day & Time',
+      'pt': '',
+    },
+    'cwq1rox8': {
+      'en': 'S',
+      'pt': '',
+    },
+    '2gxw6i0c': {
+      'en': 'M',
+      'pt': '',
+    },
+    '4pg2q9u4': {
+      'en': 'T',
+      'pt': '',
+    },
+    'mpc933gz': {
+      'en': 'W',
+      'pt': '',
+    },
+    'cnhk7lfk': {
+      'en': 'T',
+      'pt': '',
+    },
+    'l1x4ffyb': {
+      'en': 'F',
+      'pt': '',
+    },
+    '770ap8lz': {
+      'en': 'S',
+      'pt': '',
+    },
+    'zgldkz2l': {
+      'en': 'Open 24 hours',
+      'pt': '',
+    },
+    '1fw7blpg': {
+      'en': 'Closed',
+      'pt': '',
+    },
+    'nspt2hys': {
+      'en': 'Open Time',
+      'pt': '',
+    },
+    'so31otg2': {
+      'en': 'Close Time',
+      'pt': '',
+    },
+    '2qx51tp9': {
+      'en': 'Add hours',
+      'pt': '',
+    },
+    'gw9jetxz': {
+      'en': 'Cancel',
+      'pt': '',
+    },
+    'oeixcgmk': {
       'en': 'Save',
       'pt': '',
     },

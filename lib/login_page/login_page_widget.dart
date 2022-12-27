@@ -42,40 +42,40 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<EntitiesRecord>>(
-      stream: queryEntitiesRecord(
-        queryBuilder: (entitiesRecord) =>
-            entitiesRecord.where('name', isEqualTo: FFAppState().key),
-        singleRecord: true,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
-              ),
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: StreamBuilder<List<EntitiesRecord>>(
+            stream: queryEntitiesRecord(
+              queryBuilder: (entitiesRecord) => entitiesRecord
+                  .where('entity_key', isEqualTo: FFAppState().key),
+              singleRecord: true,
             ),
-          );
-        }
-        List<EntitiesRecord> loginPageEntitiesRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final loginPageEntitiesRecord = loginPageEntitiesRecordList.isNotEmpty
-            ? loginPageEntitiesRecordList.first
-            : null;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-              child: Column(
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator(
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                    ),
+                  ),
+                );
+              }
+              List<EntitiesRecord> columnEntitiesRecordList = snapshot.data!;
+              // Return an empty Container when the item does not exist.
+              if (snapshot.data!.isEmpty) {
+                return Container();
+              }
+              final columnEntitiesRecord = columnEntitiesRecordList.isNotEmpty
+                  ? columnEntitiesRecordList.first
+                  : null;
+              return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
@@ -87,7 +87,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: Image.network(
-                            loginPageEntitiesRecord!.bgImg!,
+                            columnEntitiesRecord!.bgImg!,
                           ).image,
                         ),
                       ),
@@ -101,7 +101,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   width: double.infinity,
                                   height: 100,
                                   decoration: BoxDecoration(
-                                    color: loginPageEntitiesRecord!.bgColor,
+                                    color: columnEntitiesRecord!.bgColor,
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -121,8 +121,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(16),
                                               child: Image.network(
-                                                loginPageEntitiesRecord!
-                                                    .logoIcon!,
+                                                columnEntitiesRecord!.logoIcon!,
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -131,7 +130,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                         .size
                                                         .height *
                                                     0.18,
-                                                fit: BoxFit.fill,
+                                                fit: BoxFit.contain,
                                               ),
                                             ),
                                           ),
@@ -151,16 +150,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               color: Color(0x00FFFFFF),
                                             ),
                                             child: Text(
-                                              loginPageEntitiesRecord!
-                                                  .appTitle!,
+                                              columnEntitiesRecord!.appTitle!,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Open Sans',
-                                                        color:
-                                                            loginPageEntitiesRecord!
-                                                                .appTitleColor,
+                                                        color: Colors.white,
                                                         fontSize: 27,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -183,16 +179,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               color: Color(0x00FFFFFF),
                                             ),
                                             child: Text(
-                                              loginPageEntitiesRecord!
-                                                  .appTagLine!,
+                                              columnEntitiesRecord!.appTagLine!,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Open Sans',
-                                                        color:
-                                                            loginPageEntitiesRecord!
-                                                                .appTitleColor,
+                                                        color: Colors.white,
                                                         fontSize: 16.9,
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -220,7 +213,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: double.infinity,
                                               height: 55,
                                               decoration: BoxDecoration(
-                                                color: loginPageEntitiesRecord!
+                                                color: columnEntitiesRecord!
                                                     .darkBgPageColor,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
@@ -309,7 +302,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: double.infinity,
                                               height: 55,
                                               decoration: BoxDecoration(
-                                                color: loginPageEntitiesRecord!
+                                                color: columnEntitiesRecord!
                                                     .darkBgPageColor,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
@@ -414,60 +407,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                             ),
                                             InkWell(
                                               onTap: () async {
-                                                FFAppState().key =
-                                                    loginPageEntitiesRecord!
-                                                        .entityKey!;
-                                                FFAppState().name =
-                                                    loginPageEntitiesRecord!
-                                                        .name!;
-                                                FFAppState().bgclr =
-                                                    loginPageEntitiesRecord!
-                                                        .bgColor!;
-                                                FFAppState().logoIcon =
-                                                    loginPageEntitiesRecord!
-                                                        .logoIcon!;
-                                                FFAppState().appTitle =
-                                                    loginPageEntitiesRecord!
-                                                        .appTitle!;
-                                                FFAppState().appTitleClr =
-                                                    loginPageEntitiesRecord!
-                                                        .appTitleColor!;
-                                                FFAppState().appTagLine =
-                                                    loginPageEntitiesRecord!
-                                                        .appTagLine!;
-                                                FFAppState().appTagLineClr =
-                                                    loginPageEntitiesRecord!
-                                                        .appTagColor!;
-                                                FFAppState().primaryBtnClr =
-                                                    loginPageEntitiesRecord!
-                                                        .primaryBtnColor!;
-                                                FFAppState().secondaryBtnClr =
-                                                    loginPageEntitiesRecord!
-                                                        .secondaryBtnColor!;
-                                                FFAppState().darkBgPageClr =
-                                                    loginPageEntitiesRecord!
-                                                        .darkBgPageColor!;
-                                                FFAppState().liveDivisionClr =
-                                                    loginPageEntitiesRecord!
-                                                        .liveDivisionColor!;
-                                                FFAppState().navigationIconClr =
-                                                    loginPageEntitiesRecord!
-                                                        .navigationIconColor!;
-                                                FFAppState().custonId =
-                                                    loginPageEntitiesRecord!
-                                                        .customId!;
-                                                FFAppState().createdAt =
-                                                    loginPageEntitiesRecord!
-                                                        .createdAt;
-                                                FFAppState().languageCode =
-                                                    loginPageEntitiesRecord!
-                                                        .languageCode!;
-                                                FFAppState().entityKey =
-                                                    loginPageEntitiesRecord!
-                                                        .entityKey!;
-                                                FFAppState().bgImage =
-                                                    loginPageEntitiesRecord!
-                                                        .bgImg!;
                                                 GoRouter.of(context)
                                                     .prepareAuthEvent();
 
@@ -491,9 +430,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                     0.45,
                                                 height: 50,
                                                 decoration: BoxDecoration(
-                                                  color:
-                                                      loginPageEntitiesRecord!
-                                                          .primaryBtnColor,
+                                                  color: columnEntitiesRecord!
+                                                      .primaryBtnColor,
                                                   borderRadius:
                                                       BorderRadius.circular(50),
                                                 ),
@@ -531,11 +469,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ),
                   ),
                 ],
-              ),
-            ),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

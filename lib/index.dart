@@ -16,3 +16,4 @@ export 'sign_up_page/sign_up_page_widget.dart' show SignUpPageWidget;
 export 'login_page_copy/login_page_copy_widget.dart' show LoginPageCopyWidget;
 export 'home_page_copy/home_page_copy_widget.dart' show HomePageCopyWidget;
 export 'splash_copy/splash_copy_widget.dart' show SplashCopyWidget;
+export 'testing_page/testing_page_widget.dart' show TestingPageWidget;

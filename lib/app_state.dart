@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/lat_lng.dart';
+import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
   static final FFAppState _instance = FFAppState._internal();
@@ -15,48 +16,11 @@ class FFAppState extends ChangeNotifier {
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
-    _name = prefs.getString('ff_name') ?? _name;
-    _bgclr = _colorFromIntValue(prefs.getInt('ff_bgclr')) ?? _bgclr;
-    _logoIcon = prefs.getString('ff_logoIcon') ?? _logoIcon;
-    _appTitle = prefs.getString('ff_appTitle') ?? _appTitle;
-    _appTitleClr =
-        _colorFromIntValue(prefs.getInt('ff_appTitleClr')) ?? _appTitleClr;
-    _appTagLine = prefs.getString('ff_appTagLine') ?? _appTagLine;
-    _appTagLineClr =
-        _colorFromIntValue(prefs.getInt('ff_appTagLineClr')) ?? _appTagLineClr;
-    _primaryBtnClr =
-        _colorFromIntValue(prefs.getInt('ff_primaryBtnClr')) ?? _primaryBtnClr;
-    _secondaryBtnClr = _colorFromIntValue(prefs.getInt('ff_secondaryBtnClr')) ??
-        _secondaryBtnClr;
-    _darkBgPageClr =
-        _colorFromIntValue(prefs.getInt('ff_darkBgPageClr')) ?? _darkBgPageClr;
-    _liveDivisionClr = _colorFromIntValue(prefs.getInt('ff_liveDivisionClr')) ??
-        _liveDivisionClr;
-    _navigationIconClr =
-        _colorFromIntValue(prefs.getInt('ff_navigationIconClr')) ??
-            _navigationIconClr;
-    _custonId = prefs.getInt('ff_custonId') ?? _custonId;
-    _createdAt = prefs.containsKey('ff_createdAt')
-        ? DateTime.fromMillisecondsSinceEpoch(prefs.getInt('ff_createdAt')!)
-        : null;
-    _languageCode = prefs.getString('ff_languageCode') ?? _languageCode;
-    _entityKey = prefs.getString('ff_entityKey') ?? _entityKey;
-    _bgImage = prefs.getString('ff_bgImage') ?? _bgImage;
   }
 
-  static bool _shouldNotify = true;
-  void _maybeNotifyListeners() {
-    if (_shouldNotify) notifyListeners();
-  }
-
-  // Update FFAppState without notifying and rebuilding all widgets.
-  static void updateSilently(VoidCallback callback) {
-    try {
-      _shouldNotify = false;
-      callback();
-    } finally {
-      _shouldNotify = true;
-    }
+  void update(VoidCallback callback) {
+    callback();
+    notifyListeners();
   }
 
   late SharedPreferences prefs;
@@ -64,21 +28,18 @@ class FFAppState extends ChangeNotifier {
   String _logoURL = '';
   String get logoURL => _logoURL;
   set logoURL(String _value) {
-    _maybeNotifyListeners();
     _logoURL = _value;
   }
 
   Color _primaryBtnColor = Color(4278190080);
   Color get primaryBtnColor => _primaryBtnColor;
   set primaryBtnColor(Color _value) {
-    _maybeNotifyListeners();
     _primaryBtnColor = _value;
   }
 
   bool _isloading = false;
   bool get isloading => _isloading;
   set isloading(bool _value) {
-    _maybeNotifyListeners();
     _isloading = _value;
   }
 
@@ -90,163 +51,185 @@ class FFAppState extends ChangeNotifier {
   ];
   List<String> get imgPath => _imgPath;
   set imgPath(List<String> _value) {
-    _maybeNotifyListeners();
     _imgPath = _value;
   }
 
   void addToImgPath(String _value) {
-    _maybeNotifyListeners();
     _imgPath.add(_value);
   }
 
   void removeFromImgPath(String _value) {
-    _maybeNotifyListeners();
     _imgPath.remove(_value);
   }
 
-  String _key = 'Starbucks cafe company';
+  String _key = 'starbucks';
   String get key => _key;
   set key(String _value) {
-    _maybeNotifyListeners();
     _key = _value;
   }
 
   String _name = '';
   String get name => _name;
   set name(String _value) {
-    _maybeNotifyListeners();
     _name = _value;
-    prefs.setString('ff_name', _value);
   }
 
-  Color _bgclr = Colors.transparent;
-  Color get bgclr => _bgclr;
-  set bgclr(Color _value) {
-    _maybeNotifyListeners();
-    _bgclr = _value;
-    prefs.setString('ff_bgclr', _value.value.toString());
+  String _address = '';
+  String get address => _address;
+  set address(String _value) {
+    _address = _value;
   }
 
-  String _logoIcon = '';
-  String get logoIcon => _logoIcon;
-  set logoIcon(String _value) {
-    _maybeNotifyListeners();
-    _logoIcon = _value;
-    prefs.setString('ff_logoIcon', _value);
+  String _locationWithin = '';
+  String get locationWithin => _locationWithin;
+  set locationWithin(String _value) {
+    _locationWithin = _value;
   }
 
-  String _appTitle = '';
-  String get appTitle => _appTitle;
-  set appTitle(String _value) {
-    _maybeNotifyListeners();
-    _appTitle = _value;
-    prefs.setString('ff_appTitle', _value);
+  String _hours = '';
+  String get hours => _hours;
+  set hours(String _value) {
+    _hours = _value;
   }
 
-  Color _appTitleClr = Colors.transparent;
-  Color get appTitleClr => _appTitleClr;
-  set appTitleClr(Color _value) {
-    _maybeNotifyListeners();
-    _appTitleClr = _value;
-    prefs.setString('ff_appTitleClr', _value.value.toString());
+  String _contact = '';
+  String get contact => _contact;
+  set contact(String _value) {
+    _contact = _value;
   }
 
-  String _appTagLine = '';
-  String get appTagLine => _appTagLine;
-  set appTagLine(String _value) {
-    _maybeNotifyListeners();
-    _appTagLine = _value;
-    prefs.setString('ff_appTagLine', _value);
+  String _webSite = '';
+  String get webSite => _webSite;
+  set webSite(String _value) {
+    _webSite = _value;
   }
 
-  Color _appTagLineClr = Colors.transparent;
-  Color get appTagLineClr => _appTagLineClr;
-  set appTagLineClr(Color _value) {
-    _maybeNotifyListeners();
-    _appTagLineClr = _value;
-    prefs.setString('ff_appTagLineClr', _value.value.toString());
+  LatLng? _mapLocation;
+  LatLng? get mapLocation => _mapLocation;
+  set mapLocation(LatLng? _value) {
+    _mapLocation = _value;
   }
 
-  Color _primaryBtnClr = Colors.transparent;
-  Color get primaryBtnClr => _primaryBtnClr;
-  set primaryBtnClr(Color _value) {
-    _maybeNotifyListeners();
-    _primaryBtnClr = _value;
-    prefs.setString('ff_primaryBtnClr', _value.value.toString());
+  String _timePicker = '';
+  String get timePicker => _timePicker;
+  set timePicker(String _value) {
+    _timePicker = _value;
   }
 
-  Color _secondaryBtnClr = Colors.transparent;
-  Color get secondaryBtnClr => _secondaryBtnClr;
-  set secondaryBtnClr(Color _value) {
-    _maybeNotifyListeners();
-    _secondaryBtnClr = _value;
-    prefs.setString('ff_secondaryBtnClr', _value.value.toString());
+  bool _isSunday = false;
+  bool get isSunday => _isSunday;
+  set isSunday(bool _value) {
+    _isSunday = _value;
   }
 
-  Color _darkBgPageClr = Colors.transparent;
-  Color get darkBgPageClr => _darkBgPageClr;
-  set darkBgPageClr(Color _value) {
-    _maybeNotifyListeners();
-    _darkBgPageClr = _value;
-    prefs.setString('ff_darkBgPageClr', _value.value.toString());
+  bool _isMonday = false;
+  bool get isMonday => _isMonday;
+  set isMonday(bool _value) {
+    _isMonday = _value;
   }
 
-  Color _liveDivisionClr = Colors.transparent;
-  Color get liveDivisionClr => _liveDivisionClr;
-  set liveDivisionClr(Color _value) {
-    _maybeNotifyListeners();
-    _liveDivisionClr = _value;
-    prefs.setString('ff_liveDivisionClr', _value.value.toString());
+  bool _isTuesday = false;
+  bool get isTuesday => _isTuesday;
+  set isTuesday(bool _value) {
+    _isTuesday = _value;
   }
 
-  Color _navigationIconClr = Colors.transparent;
-  Color get navigationIconClr => _navigationIconClr;
-  set navigationIconClr(Color _value) {
-    _maybeNotifyListeners();
-    _navigationIconClr = _value;
-    prefs.setString('ff_navigationIconClr', _value.value.toString());
+  bool _isWednesday = false;
+  bool get isWednesday => _isWednesday;
+  set isWednesday(bool _value) {
+    _isWednesday = _value;
   }
 
-  int _custonId = 0;
-  int get custonId => _custonId;
-  set custonId(int _value) {
-    _maybeNotifyListeners();
-    _custonId = _value;
-    prefs.setInt('ff_custonId', _value);
+  bool _isThursday = false;
+  bool get isThursday => _isThursday;
+  set isThursday(bool _value) {
+    _isThursday = _value;
   }
 
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  set createdAt(DateTime? _value) {
-    _maybeNotifyListeners();
-    _createdAt = _value;
-    _value != null
-        ? prefs.setInt('ff_createdAt', _value.millisecondsSinceEpoch)
-        : prefs.remove('ff_createdAt');
+  bool _isFriday = false;
+  bool get isFriday => _isFriday;
+  set isFriday(bool _value) {
+    _isFriday = _value;
   }
 
-  String _languageCode = '';
-  String get languageCode => _languageCode;
-  set languageCode(String _value) {
-    _maybeNotifyListeners();
-    _languageCode = _value;
-    prefs.setString('ff_languageCode', _value);
+  bool _isSaturday = false;
+  bool get isSaturday => _isSaturday;
+  set isSaturday(bool _value) {
+    _isSaturday = _value;
   }
 
-  String _entityKey = '';
-  String get entityKey => _entityKey;
-  set entityKey(String _value) {
-    _maybeNotifyListeners();
-    _entityKey = _value;
-    prefs.setString('ff_entityKey', _value);
+  List<String> _dayTimeList = [
+    'http://cdn.onlinewebfonts.com/svg/img_255487.png'
+  ];
+  List<String> get dayTimeList => _dayTimeList;
+  set dayTimeList(List<String> _value) {
+    _dayTimeList = _value;
   }
 
-  String _bgImage = '';
-  String get bgImage => _bgImage;
-  set bgImage(String _value) {
-    _maybeNotifyListeners();
-    _bgImage = _value;
-    prefs.setString('ff_bgImage', _value);
+  void addToDayTimeList(String _value) {
+    _dayTimeList.add(_value);
+  }
+
+  void removeFromDayTimeList(String _value) {
+    _dayTimeList.remove(_value);
+  }
+
+  bool _isOpen24Hours = false;
+  bool get isOpen24Hours => _isOpen24Hours;
+  set isOpen24Hours(bool _value) {
+    _isOpen24Hours = _value;
+  }
+
+  bool _isClosed = false;
+  bool get isClosed => _isClosed;
+  set isClosed(bool _value) {
+    _isClosed = _value;
+  }
+
+  String _chk = 'checking';
+  String get chk => _chk;
+  set chk(String _value) {
+    _chk = _value;
+  }
+
+  List<dynamic> _dayTimeList1 = [
+    jsonDecode(
+        '{\"openTime\":\"11:00 PM\",\"endTime\":\"11:00 PM\",\"img\":\"http://cdn.onlinewebfonts.com/svg/img_255487.png\"}')
+  ];
+  List<dynamic> get dayTimeList1 => _dayTimeList1;
+  set dayTimeList1(List<dynamic> _value) {
+    _dayTimeList1 = _value;
+  }
+
+  void addToDayTimeList1(dynamic _value) {
+    _dayTimeList1.add(_value);
+  }
+
+  void removeFromDayTimeList1(dynamic _value) {
+    _dayTimeList1.remove(_value);
+  }
+
+  int _indiii = 0;
+  int get indiii => _indiii;
+  set indiii(int _value) {
+    _indiii = _value;
+  }
+
+  List<dynamic> _emptyJsonList = [
+    jsonDecode(
+        '{\"openTime\":\"11:00 PM\",\"endTime\":\"11:00 PM\",\"img\":\"http://cdn.onlinewebfonts.com/svg/img_255487.png\"}')
+  ];
+  List<dynamic> get emptyJsonList => _emptyJsonList;
+  set emptyJsonList(List<dynamic> _value) {
+    _emptyJsonList = _value;
+  }
+
+  void addToEmptyJsonList(dynamic _value) {
+    _emptyJsonList.add(_value);
+  }
+
+  void removeFromEmptyJsonList(dynamic _value) {
+    _emptyJsonList.remove(_value);
   }
 }
 

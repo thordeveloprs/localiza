@@ -30,3 +30,11 @@ dynamic getHnW(int index) {
 Color getColor(Color? value) {
   return value!;
 }
+
+dynamic getJson() {
+  return {
+    "openTime": "---",
+    "endTime": "---",
+    "img": "http://cdn.onlinewebfonts.com/svg/img_255487.png"
+  };
+}

@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : SamplePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
+              appStateNotifier.loggedIn ? HomePageWidget() : SamplePageWidget(),
           routes: [
             FFRoute(
               name: 'LoginSimple',
@@ -156,6 +156,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'splashCopy',
               path: 'splashCopy',
               builder: (context, params) => SplashCopyWidget(),
+            ),
+            FFRoute(
+              name: 'testingPage',
+              path: 'testingPage',
+              builder: (context, params) => TestingPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -315,7 +320,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/loginPage';
+            return '/samplePage';
           }
           return null;
         },

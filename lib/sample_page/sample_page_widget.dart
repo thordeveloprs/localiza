@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../custom_code/actions/index.dart' as actions;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,7 @@ class SamplePageWidget extends StatefulWidget {
 }
 
 class _SamplePageWidgetState extends State<SamplePageWidget> {
+  DateTime? datePicked;
   bool? result;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -25,9 +27,13 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
     super.initState();
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().isloading = false;
+      FFAppState().update(() {
+        FFAppState().isloading = false;
+      });
       result = await actions.getEntityDocument();
-      FFAppState().isloading = result!;
+      FFAppState().update(() {
+        FFAppState().isloading = result!;
+      });
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -202,6 +208,66 @@ class _SamplePageWidgetState extends State<SamplePageWidget> {
                         ],
                       );
                     },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      final _datePickedTime = await showTimePicker(
+                        context: context,
+                        initialTime:
+                            TimeOfDay.fromDateTime(getCurrentTimestamp),
+                      );
+                      if (_datePickedTime != null) {
+                        setState(
+                          () => datePicked = DateTime(
+                            getCurrentTimestamp.year,
+                            getCurrentTimestamp.month,
+                            getCurrentTimestamp.day,
+                            _datePickedTime.hour,
+                            _datePickedTime.minute,
+                          ),
+                        );
+                      }
+                      FFAppState().update(() {
+                        FFAppState().timePicker = dateTimeFormat(
+                          'jms',
+                          datePicked,
+                          locale: FFLocalizations.of(context).languageCode,
+                        );
+                      });
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'a18c5puh' /* Time */,
+                    ),
+                    options: FFButtonOptions(
+                      width: 130,
+                      height: 40,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                                fontFamily: 'Open Sans',
+                                color: Colors.white,
+                              ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'utuenku7' /* Hello World */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Open Sans',
+                          color: FlutterFlowTheme.of(context).gray200,
+                        ),
                   ),
                 ),
               ],
