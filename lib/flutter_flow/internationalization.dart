@@ -344,10 +344,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search Here or Select Below',
       'pt': '',
     },
-    'rehow8zh': {
-      'en': '(250)',
-      'pt': '',
-    },
     'z27zubcy': {
       'en': 'Loja de artigos esportivas',
       'pt': '',
@@ -408,7 +404,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
     't17lobhm': {
-      'en': 'Tueday',
+      'en': 'Tuesday',
       'pt': '',
     },
     'qn76gfxp': {
@@ -722,48 +718,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Monday',
       'pt': '',
     },
-    '05lk0jiu': {
-      'en': '7:00 am-11:00 pm',
-      'pt': '',
-    },
     'k6ij795g': {
-      'en': 'Tueday',
-      'pt': '',
-    },
-    '3paeod5p': {
-      'en': '7:00 am-11:00 pm',
+      'en': 'Tuesday',
       'pt': '',
     },
     '93v2y4c5': {
       'en': 'Wednesday',
       'pt': '',
     },
-    '9ngdg0sv': {
-      'en': '7:00 am-11:00 pm',
-      'pt': '',
-    },
     'yd3aa5fo': {
       'en': 'Thursday',
-      'pt': '',
-    },
-    'l6ax69rc': {
-      'en': '7:00 am-11:00 pm',
       'pt': '',
     },
     'vfkxpxtz': {
       'en': 'Friday',
       'pt': '',
     },
-    '6zdz7gbh': {
-      'en': '7:00 am-11:00 pm',
-      'pt': '',
-    },
     'rsahpjyg': {
       'en': 'Saterday',
-      'pt': '',
-    },
-    'lpxsj1uf': {
-      'en': '7:00 am-11:00 pm',
       'pt': '',
     },
     '1xfb62h7': {
@@ -809,6 +781,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '6bbmmqrf': {
       'en': 'Open Time',
+      'pt': '',
+    },
+  },
+  // endTime
+  {
+    '0hnowol2': {
+      'en': 'Close Time',
       'pt': '',
     },
   },
@@ -864,13 +843,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n73jj74d': {
       'en': 'Save',
-      'pt': '',
-    },
-  },
-  // endTime
-  {
-    '0hnowol2': {
-      'en': 'Close Time',
       'pt': '',
     },
   },

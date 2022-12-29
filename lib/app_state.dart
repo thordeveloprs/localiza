@@ -193,8 +193,7 @@ class FFAppState extends ChangeNotifier {
   }
 
   List<dynamic> _dayTimeList1 = [
-    jsonDecode(
-        '{\"openTime\":\"11:00 PM\",\"endTime\":\"11:00 PM\",\"img\":\"http://cdn.onlinewebfonts.com/svg/img_255487.png\"}')
+    jsonDecode('{\"openTime\":\"11:00 PM\",\"endTime\":\"11:00 PM\"}')
   ];
   List<dynamic> get dayTimeList1 => _dayTimeList1;
   set dayTimeList1(List<dynamic> _value) {

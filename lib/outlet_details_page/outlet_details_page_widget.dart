@@ -90,11 +90,16 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/cancel2.JPG',
-                                    width: 35,
-                                    height: 35,
-                                    fit: BoxFit.fill,
+                                  InkWell(
+                                    onTap: () async {
+                                      context.pop();
+                                    },
+                                    child: Image.asset(
+                                      'assets/images/cancel2.JPG',
+                                      width: 35,
+                                      height: 35,
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -946,7 +951,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Colors.black,
+                                                                                        color: dateTimeFormat(
+                                                                                                  'EEEE',
+                                                                                                  getCurrentTimestamp,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ) ==
+                                                                                                'Sunday'
+                                                                                            ? Color(0xFF6F0000)
+                                                                                            : Colors.black,
                                                                                         fontSize: 15,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -965,7 +977,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                           '${sunTimeListItem.startHour}-${sunTimeListItem.endHour}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.black,
+                                                                                                color: dateTimeFormat(
+                                                                                                          'EEEE',
+                                                                                                          getCurrentTimestamp,
+                                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                                        ) ==
+                                                                                                        'Sunday'
+                                                                                                    ? Color(0xFF6F0000)
+                                                                                                    : Colors.black,
                                                                                                 fontSize: 15,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -999,7 +1018,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Colors.black,
+                                                                                        color: dateTimeFormat(
+                                                                                                  'EEEE',
+                                                                                                  getCurrentTimestamp,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ) ==
+                                                                                                'Monday'
+                                                                                            ? Color(0xFF6F0000)
+                                                                                            : Colors.black,
                                                                                         fontSize: 15,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -1018,7 +1044,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                           '${monTimeListItem.startHour}-${monTimeListItem.endHour}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.black,
+                                                                                                color: dateTimeFormat(
+                                                                                                          'EEEE',
+                                                                                                          getCurrentTimestamp,
+                                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                                        ) ==
+                                                                                                        'Monday'
+                                                                                                    ? Color(0xFF6F0000)
+                                                                                                    : Colors.black,
                                                                                                 fontSize: 15,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -1048,11 +1081,18 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                                                                                 child: Text(
                                                                                   FFLocalizations.of(context).getText(
-                                                                                    't17lobhm' /* Tueday */,
+                                                                                    't17lobhm' /* Tuesday */,
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Colors.black,
+                                                                                        color: dateTimeFormat(
+                                                                                                  'EEEE',
+                                                                                                  getCurrentTimestamp,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ) ==
+                                                                                                'Tuesday'
+                                                                                            ? Color(0xFF6F0000)
+                                                                                            : Colors.black,
                                                                                         fontSize: 15,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -1071,7 +1111,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                           '${tueTimeListItem.startHour}-${tueTimeListItem.endHour}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.black,
+                                                                                                color: dateTimeFormat(
+                                                                                                          'EEEE',
+                                                                                                          getCurrentTimestamp,
+                                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                                        ) ==
+                                                                                                        'Tuesday'
+                                                                                                    ? Color(0xFF6F0000)
+                                                                                                    : Colors.black,
                                                                                                 fontSize: 15,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -1105,7 +1152,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Colors.black,
+                                                                                        color: dateTimeFormat(
+                                                                                                  'EEEE',
+                                                                                                  getCurrentTimestamp,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ) ==
+                                                                                                'Wednesday'
+                                                                                            ? Color(0xFF6F0000)
+                                                                                            : Colors.black,
                                                                                         fontSize: 15,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -1124,7 +1178,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                           '${wedTimeListItem.startHour}-${wedTimeListItem.endHour}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.black,
+                                                                                                color: dateTimeFormat(
+                                                                                                          'EEEE',
+                                                                                                          getCurrentTimestamp,
+                                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                                        ) ==
+                                                                                                        'Wednesday'
+                                                                                                    ? Color(0xFF6F0000)
+                                                                                                    : Colors.black,
                                                                                                 fontSize: 15,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -1158,7 +1219,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Colors.black,
+                                                                                        color: dateTimeFormat(
+                                                                                                  'EEEE',
+                                                                                                  getCurrentTimestamp,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ) ==
+                                                                                                'Thursday'
+                                                                                            ? Color(0xFF6F0000)
+                                                                                            : Colors.black,
                                                                                         fontSize: 15,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -1177,7 +1245,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                           '${thuTimeListItem.startHour}-${thuTimeListItem.endHour}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.black,
+                                                                                                color: dateTimeFormat(
+                                                                                                          'EEEE',
+                                                                                                          getCurrentTimestamp,
+                                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                                        ) ==
+                                                                                                        'Thursday'
+                                                                                                    ? Color(0xFF6F0000)
+                                                                                                    : Colors.black,
                                                                                                 fontSize: 15,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -1211,7 +1286,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Colors.black,
+                                                                                        color: dateTimeFormat(
+                                                                                                  'EEEE',
+                                                                                                  getCurrentTimestamp,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ) ==
+                                                                                                'Friday'
+                                                                                            ? Color(0xFF6F0000)
+                                                                                            : Colors.black,
                                                                                         fontSize: 15,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -1230,7 +1312,14 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                           '${friTimeListItem.startHour}-${friTimeListItem.endHour}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.black,
+                                                                                                color: dateTimeFormat(
+                                                                                                          'EEEE',
+                                                                                                          getCurrentTimestamp,
+                                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                                        ) ==
+                                                                                                        'Friday'
+                                                                                                    ? Color(0xFF6F0000)
+                                                                                                    : Colors.black,
                                                                                                 fontSize: 15,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -1257,8 +1346,16 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).title3.override(
                                                                                       fontFamily: 'Roboto',
-                                                                                      color: Colors.black,
+                                                                                      color: dateTimeFormat(
+                                                                                                'EEEE',
+                                                                                                getCurrentTimestamp,
+                                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                                              ) ==
+                                                                                              'Saturday'
+                                                                                          ? Color(0xFF6F0000)
+                                                                                          : Colors.black,
                                                                                       fontSize: 15,
+                                                                                      fontWeight: FontWeight.normal,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1275,8 +1372,16 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                                         '${satTimeListItem.startHour}-${satTimeListItem.endHour}',
                                                                                         style: FlutterFlowTheme.of(context).title3.override(
                                                                                               fontFamily: 'Roboto',
-                                                                                              color: Colors.black,
+                                                                                              color: dateTimeFormat(
+                                                                                                        'EEEE',
+                                                                                                        getCurrentTimestamp,
+                                                                                                        locale: FFLocalizations.of(context).languageCode,
+                                                                                                      ) ==
+                                                                                                      'Saturday'
+                                                                                                  ? Color(0xFF6F0000)
+                                                                                                  : Colors.black,
                                                                                               fontSize: 15,
+                                                                                              fontWeight: FontWeight.normal,
                                                                                             ),
                                                                                       ),
                                                                                     );

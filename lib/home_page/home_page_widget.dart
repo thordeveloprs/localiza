@@ -3,7 +3,9 @@ import '../backend/backend.dart';
 import '../components/new_nav_bar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,13 +18,25 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  TextEditingController? textController;
+  String? entityKey;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController? textController;
 
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      entityKey = await actions.getEntityKey();
+      if (valueOrDefault(currentUserDocument?.themeKey, '') != entityKey) {
+        GoRouter.of(context).prepareAuthEvent();
+        await signOut();
+      }
+
+      context.goNamedAuth('LoginPage', mounted);
+    });
+
     textController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -467,9 +481,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                                   child: Text(
-                                                                                    FFLocalizations.of(context).getText(
-                                                                                      'rehow8zh' /* (250) */,
-                                                                                    ),
+                                                                                    '(${containerRestroDetailsRecord.userCount?.toString()})',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Roboto',
                                                                                           color: Colors.white,

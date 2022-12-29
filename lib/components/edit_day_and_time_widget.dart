@@ -35,6 +35,7 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
   List<String>? newDaysList12;
   List<String>? newDaysList13;
   List<dynamic>? result;
+  dynamic? newUpdatedTimeList;
 
   @override
   void initState() {
@@ -1071,10 +1072,7 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                                         }
                                                       },
                                                       child: Image.network(
-                                                        getJsonField(
-                                                          dtListItem,
-                                                          r'''$.img''',
-                                                        ),
+                                                        'http://cdn.onlinewebfonts.com/svg/img_255487.png',
                                                         width: 18,
                                                         height: 18,
                                                         fit: BoxFit.fill,
@@ -1206,6 +1204,20 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                               result = await actions.getTimeDetails(
                                 FFAppState().dayTimeList1.toList(),
                               );
+                              newUpdatedTimeList =
+                                  await actions.saveTimeDetails(
+                                FFAppState().daysList.toList(),
+                                FFAppState().workingJson,
+                                result!.toList(),
+                              );
+                              FFAppState().update(() {
+                                FFAppState().workingJson = newUpdatedTimeList!;
+                              });
+                              FFAppState().update(() {
+                                FFAppState().dayTimeList1 =
+                                    FFAppState().emptyJsonList.toList();
+                              });
+                              Navigator.pop(context);
 
                               setState(() {});
                             },

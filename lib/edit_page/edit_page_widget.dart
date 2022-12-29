@@ -122,11 +122,16 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                   ),
                                 ],
                               ),
-                              Image.asset(
-                                'assets/images/cancel2.JPG',
-                                width: 35,
-                                height: 35,
-                                fit: BoxFit.fill,
+                              InkWell(
+                                onTap: () async {
+                                  context.pop();
+                                },
+                                child: Image.asset(
+                                  'assets/images/cancel2.JPG',
+                                  width: 35,
+                                  height: 35,
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ],
                           ),
@@ -732,7 +737,11 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                                                       .height *
                                                                   1,
                                                               child:
-                                                                  HoursWidget(),
+                                                                  HoursWidget(
+                                                                workingHoursRef: widget
+                                                                    .outletDoc!
+                                                                    .workingHoursRef,
+                                                              ),
                                                             ),
                                                           );
                                                         },

@@ -8,14 +8,16 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<dynamic> saveTimeDetails(
-  List<String> listOfDays,
-  dynamic exitingTimeDetail,
-  List<dynamic> timeDetails,
-) async {
-  for (int i = 0; i < listOfDays.length; i++) {
-    exitingTimeDetail[listOfDays[i]] = timeDetails;
+import 'dart:js' as js;
+
+String getEntityKey() {
+  // Add your function code here!
+  String entity_key = js.context['location']['href'];
+  String key = entity_key.split(".")[0].split("//")[1];
+  print(key);
+  if (key == 'burgerkinguk') {
+    return 'burgerkinguk';
+  } else {
+    return 'starbucks';
   }
-  print(exitingTimeDetail);
-  return exitingTimeDetail;
 }
