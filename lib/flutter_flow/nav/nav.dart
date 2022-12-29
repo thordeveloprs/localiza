@@ -135,7 +135,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'EditPage',
               path: 'editPage',
-              builder: (context, params) => EditPageWidget(),
+              asyncParams: {
+                'outletDoc':
+                    getDoc(['restroDetails'], RestroDetailsRecord.serializer),
+              },
+              builder: (context, params) => EditPageWidget(
+                outletDoc: params.getParam('outletDoc', ParamType.Document),
+              ),
             ),
             FFRoute(
               name: 'SignUpPage',

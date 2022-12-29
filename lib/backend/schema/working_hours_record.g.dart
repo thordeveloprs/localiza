@@ -65,6 +65,70 @@ class _$WorkingHoursRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
+    value = object.sunTime;
+    if (value != null) {
+      result
+        ..add('sun_time')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.monTimingList;
+    if (value != null) {
+      result
+        ..add('mon_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.tuesTimingList;
+    if (value != null) {
+      result
+        ..add('tues_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.wedTimingList;
+    if (value != null) {
+      result
+        ..add('wed_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.thusTimingList;
+    if (value != null) {
+      result
+        ..add('thus_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.friTimingList;
+    if (value != null) {
+      result
+        ..add('fri_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.satTimingList;
+    if (value != null) {
+      result
+        ..add('sat_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
+    value = object.sunTimingList;
+    if (value != null) {
+      result
+        ..add('sun_timing_list')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(TimeStruct)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -130,6 +194,54 @@ class _$WorkingHoursRecordSerializer
           result.createdAt = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
+        case 'sun_time':
+          result.sunTime.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'mon_timing_list':
+          result.monTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'tues_timing_list':
+          result.tuesTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'wed_timing_list':
+          result.wedTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'thus_timing_list':
+          result.thusTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'fri_timing_list':
+          result.friTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'sat_timing_list':
+          result.satTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'sun_timing_list':
+          result.sunTimingList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(TimeStruct)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -165,6 +277,22 @@ class _$WorkingHoursRecord extends WorkingHoursRecord {
   @override
   final DateTime? createdAt;
   @override
+  final BuiltList<TimeStruct>? sunTime;
+  @override
+  final BuiltList<TimeStruct>? monTimingList;
+  @override
+  final BuiltList<TimeStruct>? tuesTimingList;
+  @override
+  final BuiltList<TimeStruct>? wedTimingList;
+  @override
+  final BuiltList<TimeStruct>? thusTimingList;
+  @override
+  final BuiltList<TimeStruct>? friTimingList;
+  @override
+  final BuiltList<TimeStruct>? satTimingList;
+  @override
+  final BuiltList<TimeStruct>? sunTimingList;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$WorkingHoursRecord(
@@ -182,6 +310,14 @@ class _$WorkingHoursRecord extends WorkingHoursRecord {
       required this.sunTiminig,
       this.listPhotos,
       this.createdAt,
+      this.sunTime,
+      this.monTimingList,
+      this.tuesTimingList,
+      this.wedTimingList,
+      this.thusTimingList,
+      this.friTimingList,
+      this.satTimingList,
+      this.sunTimingList,
       this.ffRef})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -223,6 +359,14 @@ class _$WorkingHoursRecord extends WorkingHoursRecord {
         sunTiminig == other.sunTiminig &&
         listPhotos == other.listPhotos &&
         createdAt == other.createdAt &&
+        sunTime == other.sunTime &&
+        monTimingList == other.monTimingList &&
+        tuesTimingList == other.tuesTimingList &&
+        wedTimingList == other.wedTimingList &&
+        thusTimingList == other.thusTimingList &&
+        friTimingList == other.friTimingList &&
+        satTimingList == other.satTimingList &&
+        sunTimingList == other.sunTimingList &&
         ffRef == other.ffRef;
   }
 
@@ -237,16 +381,41 @@ class _$WorkingHoursRecord extends WorkingHoursRecord {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, customId.hashCode),
-                                            monTiminig.hashCode),
-                                        tuesTiminig.hashCode),
-                                    wedsTiminig.hashCode),
-                                thusTiminig.hashCode),
-                            friTiminig.hashCode),
-                        satTiminig.hashCode),
-                    sunTiminig.hashCode),
-                listPhotos.hashCode),
-            createdAt.hashCode),
+                                        $jc(
+                                            $jc(
+                                                $jc(
+                                                    $jc(
+                                                        $jc(
+                                                            $jc(
+                                                                $jc(
+                                                                    $jc(
+                                                                        $jc(
+                                                                            $jc(
+                                                                                0,
+                                                                                customId
+                                                                                    .hashCode),
+                                                                            monTiminig
+                                                                                .hashCode),
+                                                                        tuesTiminig
+                                                                            .hashCode),
+                                                                    wedsTiminig
+                                                                        .hashCode),
+                                                                thusTiminig
+                                                                    .hashCode),
+                                                            friTiminig
+                                                                .hashCode),
+                                                        satTiminig.hashCode),
+                                                    sunTiminig.hashCode),
+                                                listPhotos.hashCode),
+                                            createdAt.hashCode),
+                                        sunTime.hashCode),
+                                    monTimingList.hashCode),
+                                tuesTimingList.hashCode),
+                            wedTimingList.hashCode),
+                        thusTimingList.hashCode),
+                    friTimingList.hashCode),
+                satTimingList.hashCode),
+            sunTimingList.hashCode),
         ffRef.hashCode));
   }
 
@@ -263,6 +432,14 @@ class _$WorkingHoursRecord extends WorkingHoursRecord {
           ..add('sunTiminig', sunTiminig)
           ..add('listPhotos', listPhotos)
           ..add('createdAt', createdAt)
+          ..add('sunTime', sunTime)
+          ..add('monTimingList', monTimingList)
+          ..add('tuesTimingList', tuesTimingList)
+          ..add('wedTimingList', wedTimingList)
+          ..add('thusTimingList', thusTimingList)
+          ..add('friTimingList', friTimingList)
+          ..add('satTimingList', satTimingList)
+          ..add('sunTimingList', sunTimingList)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -328,6 +505,53 @@ class WorkingHoursRecordBuilder
   DateTime? get createdAt => _$this._createdAt;
   set createdAt(DateTime? createdAt) => _$this._createdAt = createdAt;
 
+  ListBuilder<TimeStruct>? _sunTime;
+  ListBuilder<TimeStruct> get sunTime =>
+      _$this._sunTime ??= new ListBuilder<TimeStruct>();
+  set sunTime(ListBuilder<TimeStruct>? sunTime) => _$this._sunTime = sunTime;
+
+  ListBuilder<TimeStruct>? _monTimingList;
+  ListBuilder<TimeStruct> get monTimingList =>
+      _$this._monTimingList ??= new ListBuilder<TimeStruct>();
+  set monTimingList(ListBuilder<TimeStruct>? monTimingList) =>
+      _$this._monTimingList = monTimingList;
+
+  ListBuilder<TimeStruct>? _tuesTimingList;
+  ListBuilder<TimeStruct> get tuesTimingList =>
+      _$this._tuesTimingList ??= new ListBuilder<TimeStruct>();
+  set tuesTimingList(ListBuilder<TimeStruct>? tuesTimingList) =>
+      _$this._tuesTimingList = tuesTimingList;
+
+  ListBuilder<TimeStruct>? _wedTimingList;
+  ListBuilder<TimeStruct> get wedTimingList =>
+      _$this._wedTimingList ??= new ListBuilder<TimeStruct>();
+  set wedTimingList(ListBuilder<TimeStruct>? wedTimingList) =>
+      _$this._wedTimingList = wedTimingList;
+
+  ListBuilder<TimeStruct>? _thusTimingList;
+  ListBuilder<TimeStruct> get thusTimingList =>
+      _$this._thusTimingList ??= new ListBuilder<TimeStruct>();
+  set thusTimingList(ListBuilder<TimeStruct>? thusTimingList) =>
+      _$this._thusTimingList = thusTimingList;
+
+  ListBuilder<TimeStruct>? _friTimingList;
+  ListBuilder<TimeStruct> get friTimingList =>
+      _$this._friTimingList ??= new ListBuilder<TimeStruct>();
+  set friTimingList(ListBuilder<TimeStruct>? friTimingList) =>
+      _$this._friTimingList = friTimingList;
+
+  ListBuilder<TimeStruct>? _satTimingList;
+  ListBuilder<TimeStruct> get satTimingList =>
+      _$this._satTimingList ??= new ListBuilder<TimeStruct>();
+  set satTimingList(ListBuilder<TimeStruct>? satTimingList) =>
+      _$this._satTimingList = satTimingList;
+
+  ListBuilder<TimeStruct>? _sunTimingList;
+  ListBuilder<TimeStruct> get sunTimingList =>
+      _$this._sunTimingList ??= new ListBuilder<TimeStruct>();
+  set sunTimingList(ListBuilder<TimeStruct>? sunTimingList) =>
+      _$this._sunTimingList = sunTimingList;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -349,6 +573,14 @@ class WorkingHoursRecordBuilder
       _sunTiminig = $v.sunTiminig.toBuilder();
       _listPhotos = $v.listPhotos?.toBuilder();
       _createdAt = $v.createdAt;
+      _sunTime = $v.sunTime?.toBuilder();
+      _monTimingList = $v.monTimingList?.toBuilder();
+      _tuesTimingList = $v.tuesTimingList?.toBuilder();
+      _wedTimingList = $v.wedTimingList?.toBuilder();
+      _thusTimingList = $v.thusTimingList?.toBuilder();
+      _friTimingList = $v.friTimingList?.toBuilder();
+      _satTimingList = $v.satTimingList?.toBuilder();
+      _sunTimingList = $v.sunTimingList?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -384,6 +616,14 @@ class WorkingHoursRecordBuilder
               sunTiminig: sunTiminig.build(),
               listPhotos: _listPhotos?.build(),
               createdAt: createdAt,
+              sunTime: _sunTime?.build(),
+              monTimingList: _monTimingList?.build(),
+              tuesTimingList: _tuesTimingList?.build(),
+              wedTimingList: _wedTimingList?.build(),
+              thusTimingList: _thusTimingList?.build(),
+              friTimingList: _friTimingList?.build(),
+              satTimingList: _satTimingList?.build(),
+              sunTimingList: _sunTimingList?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -404,6 +644,23 @@ class WorkingHoursRecordBuilder
         sunTiminig.build();
         _$failedField = 'listPhotos';
         _listPhotos?.build();
+
+        _$failedField = 'sunTime';
+        _sunTime?.build();
+        _$failedField = 'monTimingList';
+        _monTimingList?.build();
+        _$failedField = 'tuesTimingList';
+        _tuesTimingList?.build();
+        _$failedField = 'wedTimingList';
+        _wedTimingList?.build();
+        _$failedField = 'thusTimingList';
+        _thusTimingList?.build();
+        _$failedField = 'friTimingList';
+        _friTimingList?.build();
+        _$failedField = 'satTimingList';
+        _satTimingList?.build();
+        _$failedField = 'sunTimingList';
+        _sunTimingList?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'WorkingHoursRecord', _$failedField, e.toString());

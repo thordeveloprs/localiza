@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<List<TimeStruct>> getTimeDetails(List<dynamic> timeJson) async {
+Future<List<dynamic>> getTimeDetails(List<dynamic> timeJson) async {
   // Add your function code here!
   var b = [];
   print(timeJson);
 
   for (int i = 0; i < timeJson.length; i++) {
-    b.add(getTimeList(timeJson[i], 'openTime'));
+    b.add(getTimeWithKey(timeJson[i], 'openTime'));
   }
 
   print('---B $b');
@@ -40,7 +40,7 @@ Future<List<TimeStruct>> getTimeDetails(List<dynamic> timeJson) async {
   var opTime;
   var enTime;
   var newList = [];
-  List<TimeStruct> resultList = [];
+  //List<TimeStruct> resultList = [];
   int p = 0;
 
   for (int i = 0; i < timeJson.length; i++) {
@@ -53,15 +53,15 @@ Future<List<TimeStruct>> getTimeDetails(List<dynamic> timeJson) async {
     if (i + 1 == timeJson.length) {
       newList.add({"openTime": opTime, "endTime": enTime});
     } else {
-      int NextOpTime = getInt(timeJson[i + 1]['openTime']);
-      int NextEnTime = getInt(timeJson[i + 1]['endTime']);
-      int curEnTime = getInt(enTime);
+      int NextOpTime = getTimeWithKey(timeJson[i + 1], 'openTime');
+      int NextEnTime = getTimeWithKey(timeJson[i + 1], 'endTime');
+      int curEnTime = getTime(enTime);
       if (NextOpTime > curEnTime) {
         newList.add({"openTime": opTime, "endTime": enTime});
-        TimeStructBuilder data = new TimeStructBuilder();
-        data.startHour = opTime;
-        data.endHour = enTime;
-        resultList.add(data.build());
+        // TimeStructBuilder data = new TimeStructBuilder();
+        // data.startHour = opTime;
+        // data.endHour = enTime;
+        // resultList.add(data.build());
         p = 0;
       } else {
         if (curEnTime < NextEnTime) {
@@ -71,33 +71,14 @@ Future<List<TimeStruct>> getTimeDetails(List<dynamic> timeJson) async {
     }
   }
   print(newList);
-  return resultList;
+  return newList;
 }
 
-int getInt(var s) {
-  var c = s;
-  var d;
-  var e;
-  if (c != null) {
-    d = c.split(':');
-  }
-  if (d[1] != null) {
-    e = d[1].split(' ');
-  }
-//     print(d);
-//     print(e);
-  var number = d[0] + e[0];
-//     print(number);
-  if (d[1][3] == 'P') {
-    number = int.parse(number) + 1200;
-  } else {
-    number = int.parse(number);
-  }
-  return number;
+int getTimeWithKey(var object, String key) {
+  return getTime(object[key]);
 }
 
-int getTimeList(var object, String key) {
-  var time = object[key];
+int getTime(var time) {
   var amPm = time[time.length - 2];
   var timeOnly = time.substring(0, time.length - 3);
   var timeArray = timeOnly.split(":");

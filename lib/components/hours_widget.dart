@@ -1,6 +1,7 @@
 import '../components/edit_day_and_time_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,17 @@ class HoursWidget extends StatefulWidget {
 }
 
 class _HoursWidgetState extends State<HoursWidget> {
+  List<String>? newDaysList10;
+  List<String>? newDaysList2;
+  List<String>? newDaysList3;
+  List<String>? newDaysList4;
+  List<String>? newDaysList5;
+  List<String>? newDaysList6;
+  List<String>? newDaysList7;
+  List<String>? newDaysList1;
+  List<String>? newDaysList8;
+  List<String>? newDaysList9;
+
   @override
   void initState() {
     super.initState();
@@ -225,607 +237,1031 @@ class _HoursWidgetState extends State<HoursWidget> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'egrhc39i' /* Sunday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '9gunikuv' /* 7:00 am-11:00 pm */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
-                                                ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = true;
-                                              FFAppState().isMonday = false;
-                                              FFAppState().isTuesday = false;
-                                              FFAppState().isWednesday = false;
-                                              FFAppState().isThursday = false;
-                                              FFAppState().isFriday = false;
-                                              FFAppState().isSaturday = false;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
+                              Builder(
+                                builder: (context) {
+                                  final wrHrList =
+                                      FFAppState().workingJson.toList();
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: List.generate(wrHrList.length,
+                                        (wrHrListIndex) {
+                                      final wrHrListItem =
+                                          wrHrList[wrHrListIndex];
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'egrhc39i' /* Sunday */,
                                                   ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        '26hhknms' /* Monday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'ox8vem1d' /* 7:00 am-11:00 pm */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
                                                 ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = false;
-                                              FFAppState().isMonday = true;
-                                              FFAppState().isTuesday = false;
-                                              FFAppState().isWednesday = false;
-                                              FFAppState().isThursday = false;
-                                              FFAppState().isFriday = false;
-                                              FFAppState().isSaturday = false;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
-                                                  ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'qhmhzoms' /* Tueday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '0f7usxz2' /* 7:00 am-11:00 pm */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Builder(
+                                                      builder: (context) {
+                                                        final sunTime =
+                                                            getJsonField(
+                                                          wrHrListItem,
+                                                          r'''$.sun''',
+                                                        ).toList();
+                                                        return Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: List.generate(
+                                                              sunTime.length,
+                                                              (sunTimeIndex) {
+                                                            final sunTimeItem =
+                                                                sunTime[
+                                                                    sunTimeIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          0,
+                                                                          10,
+                                                                          0),
+                                                              child: Text(
+                                                                '${getJsonField(
+                                                                  sunTimeItem,
+                                                                  r'''$.openTime''',
+                                                                ).toString()}-${getJsonField(
+                                                                  sunTimeItem,
+                                                                  r'''$.endTime''',
+                                                                ).toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Roboto',
+                                                                      color: Color(
+                                                                          0xFF424242),
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                              ),
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = true;
+                                                          FFAppState()
+                                                              .isMonday = false;
+                                                          FFAppState()
+                                                                  .isTuesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              false;
+                                                          FFAppState()
+                                                              .isFriday = false;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              false;
+                                                        });
+                                                        newDaysList10 =
+                                                            await actions
+                                                                .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList10!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = false;
-                                              FFAppState().isMonday = false;
-                                              FFAppState().isTuesday = true;
-                                              FFAppState().isWednesday = false;
-                                              FFAppState().isThursday = false;
-                                              FFAppState().isFriday = false;
-                                              FFAppState().isSaturday = false;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
-                                                  ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'uwtnz24v' /* Wednesday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '4u0pnx81' /* 7:00 am-11:00 pm */,
+                                              ],
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
-                                                ),
                                           ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = false;
-                                              FFAppState().isMonday = false;
-                                              FFAppState().isTuesday = false;
-                                              FFAppState().isWednesday = true;
-                                              FFAppState().isThursday = false;
-                                              FFAppState().isFriday = false;
-                                              FFAppState().isSaturday = false;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '7oi9k9c8' /* Monday */,
                                                   ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'qmj87wn7' /* Thursday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '5nzffey7' /* 7:00 am-11:00 pm */,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 10, 0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '05lk0jiu' /* 7:00 am-11:00 pm */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Color(
+                                                                      0xFF424242),
+                                                                  fontSize: 18,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = false;
+                                                          FFAppState()
+                                                              .isMonday = true;
+                                                          FFAppState()
+                                                                  .isTuesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              false;
+                                                          FFAppState()
+                                                              .isFriday = false;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              false;
+                                                        });
+                                                        newDaysList2 = await actions
+                                                            .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList2!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
-                                                ),
                                           ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = false;
-                                              FFAppState().isMonday = false;
-                                              FFAppState().isTuesday = false;
-                                              FFAppState().isWednesday = false;
-                                              FFAppState().isThursday = true;
-                                              FFAppState().isFriday = false;
-                                              FFAppState().isSaturday = false;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'k6ij795g' /* Tueday */,
                                                   ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'b0ycm16d' /* Friday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'qcksx0rj' /* 7:00 am-11:00 pm */,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 10, 0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '3paeod5p' /* 7:00 am-11:00 pm */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Color(
+                                                                      0xFF424242),
+                                                                  fontSize: 18,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = false;
+                                                          FFAppState()
+                                                              .isMonday = false;
+                                                          FFAppState()
+                                                              .isTuesday = true;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              false;
+                                                          FFAppState()
+                                                              .isFriday = false;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              false;
+                                                        });
+                                                        newDaysList3 = await actions
+                                                            .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList3!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
-                                                ),
                                           ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = false;
-                                              FFAppState().isMonday = false;
-                                              FFAppState().isTuesday = false;
-                                              FFAppState().isWednesday = false;
-                                              FFAppState().isThursday = false;
-                                              FFAppState().isFriday = true;
-                                              FFAppState().isSaturday = false;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '93v2y4c5' /* Wednesday */,
                                                   ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 20),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        '2xc8g02d' /* Saterday */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF424242),
-                                            fontSize: 18,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 10, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'vwmatm8l' /* 7:00 am-11:00 pm */,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 10, 0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '9ngdg0sv' /* 7:00 am-11:00 pm */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Color(
+                                                                      0xFF424242),
+                                                                  fontSize: 18,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = false;
+                                                          FFAppState()
+                                                              .isMonday = false;
+                                                          FFAppState()
+                                                                  .isTuesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              true;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              false;
+                                                          FFAppState()
+                                                              .isFriday = false;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              false;
+                                                        });
+                                                        newDaysList4 = await actions
+                                                            .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList4!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF424242),
-                                                  fontSize: 18,
-                                                ),
                                           ),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            FFAppState().update(() {
-                                              FFAppState().isSunday = false;
-                                              FFAppState().isMonday = false;
-                                              FFAppState().isTuesday = false;
-                                              FFAppState().isWednesday = false;
-                                              FFAppState().isThursday = false;
-                                              FFAppState().isFriday = false;
-                                              FFAppState().isSaturday = true;
-                                            });
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            1,
-                                                    child:
-                                                        EditDayAndTimeWidget(),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'yd3aa5fo' /* Thursday */,
                                                   ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Icon(
-                                            Icons.edit_outlined,
-                                            color: Color(0xFF424242),
-                                            size: 24,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 10, 0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'l6ax69rc' /* 7:00 am-11:00 pm */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Color(
+                                                                      0xFF424242),
+                                                                  fontSize: 18,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = false;
+                                                          FFAppState()
+                                                              .isMonday = false;
+                                                          FFAppState()
+                                                                  .isTuesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              true;
+                                                          FFAppState()
+                                                              .isFriday = false;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              false;
+                                                        });
+                                                        newDaysList5 = await actions
+                                                            .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList5!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'vfkxpxtz' /* Friday */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 10, 0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '6zdz7gbh' /* 7:00 am-11:00 pm */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Color(
+                                                                      0xFF424242),
+                                                                  fontSize: 18,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = false;
+                                                          FFAppState()
+                                                              .isMonday = false;
+                                                          FFAppState()
+                                                                  .isTuesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              false;
+                                                          FFAppState()
+                                                              .isFriday = true;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              false;
+                                                        });
+                                                        newDaysList6 = await actions
+                                                            .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList6!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 10, 20),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'rsahpjyg' /* Saterday */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 10, 0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'lpxsj1uf' /* 7:00 am-11:00 pm */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Color(
+                                                                      0xFF424242),
+                                                                  fontSize: 18,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                              .isSunday = false;
+                                                          FFAppState()
+                                                              .isMonday = false;
+                                                          FFAppState()
+                                                                  .isTuesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isWednesday =
+                                                              false;
+                                                          FFAppState()
+                                                                  .isThursday =
+                                                              false;
+                                                          FFAppState()
+                                                              .isFriday = false;
+                                                          FFAppState()
+                                                                  .isSaturday =
+                                                              true;
+                                                        });
+                                                        newDaysList7 = await actions
+                                                            .getSelectedDaysList(
+                                                          FFAppState().isSunday,
+                                                          FFAppState().isMonday,
+                                                          FFAppState()
+                                                              .isTuesday,
+                                                          FFAppState()
+                                                              .isWednesday,
+                                                          FFAppState()
+                                                              .isThursday,
+                                                          FFAppState().isFriday,
+                                                          FFAppState()
+                                                              .isSaturday,
+                                                        );
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .daysList =
+                                                              newDaysList7!
+                                                                  .toList();
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    1,
+                                                                child:
+                                                                    EditDayAndTimeWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            Color(0xFF424242),
+                                                        size: 24,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    }),
+                                  );
+                                },
                               ),
                               Padding(
                                 padding:
@@ -846,6 +1282,20 @@ class _HoursWidgetState extends State<HoursWidget> {
                                           FFAppState().isFriday = true;
                                           FFAppState().isSaturday = true;
                                         });
+                                        newDaysList1 =
+                                            await actions.getSelectedDaysList(
+                                          FFAppState().isSunday,
+                                          FFAppState().isMonday,
+                                          FFAppState().isTuesday,
+                                          FFAppState().isWednesday,
+                                          FFAppState().isThursday,
+                                          FFAppState().isFriday,
+                                          FFAppState().isSaturday,
+                                        );
+                                        FFAppState().update(() {
+                                          FFAppState().daysList =
+                                              newDaysList1!.toList();
+                                        });
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -865,6 +1315,8 @@ class _HoursWidgetState extends State<HoursWidget> {
                                             );
                                           },
                                         ).then((value) => setState(() {}));
+
+                                        setState(() {});
                                       },
                                       child: Container(
                                         width:
@@ -907,6 +1359,20 @@ class _HoursWidgetState extends State<HoursWidget> {
                                           FFAppState().isFriday = true;
                                           FFAppState().isSaturday = true;
                                         });
+                                        newDaysList8 =
+                                            await actions.getSelectedDaysList(
+                                          FFAppState().isSunday,
+                                          FFAppState().isMonday,
+                                          FFAppState().isTuesday,
+                                          FFAppState().isWednesday,
+                                          FFAppState().isThursday,
+                                          FFAppState().isFriday,
+                                          FFAppState().isSaturday,
+                                        );
+                                        FFAppState().update(() {
+                                          FFAppState().daysList =
+                                              newDaysList8!.toList();
+                                        });
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -926,6 +1392,8 @@ class _HoursWidgetState extends State<HoursWidget> {
                                             );
                                           },
                                         ).then((value) => setState(() {}));
+
+                                        setState(() {});
                                       },
                                       child: Container(
                                         width:
@@ -968,6 +1436,20 @@ class _HoursWidgetState extends State<HoursWidget> {
                                           FFAppState().isFriday = false;
                                           FFAppState().isSaturday = false;
                                         });
+                                        newDaysList9 =
+                                            await actions.getSelectedDaysList(
+                                          FFAppState().isSunday,
+                                          FFAppState().isMonday,
+                                          FFAppState().isTuesday,
+                                          FFAppState().isWednesday,
+                                          FFAppState().isThursday,
+                                          FFAppState().isFriday,
+                                          FFAppState().isSaturday,
+                                        );
+                                        FFAppState().update(() {
+                                          FFAppState().daysList =
+                                              newDaysList9!.toList();
+                                        });
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -987,6 +1469,8 @@ class _HoursWidgetState extends State<HoursWidget> {
                                             );
                                           },
                                         ).then((value) => setState(() {}));
+
+                                        setState(() {});
                                       },
                                       child: Container(
                                         width:

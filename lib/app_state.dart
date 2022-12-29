@@ -231,6 +231,40 @@ class FFAppState extends ChangeNotifier {
   void removeFromEmptyJsonList(dynamic _value) {
     _emptyJsonList.remove(_value);
   }
+
+  List<dynamic> _timeResult = [];
+  List<dynamic> get timeResult => _timeResult;
+  set timeResult(List<dynamic> _value) {
+    _timeResult = _value;
+  }
+
+  void addToTimeResult(dynamic _value) {
+    _timeResult.add(_value);
+  }
+
+  void removeFromTimeResult(dynamic _value) {
+    _timeResult.remove(_value);
+  }
+
+  List<String> _daysList = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  List<String> get daysList => _daysList;
+  set daysList(List<String> _value) {
+    _daysList = _value;
+  }
+
+  void addToDaysList(String _value) {
+    _daysList.add(_value);
+  }
+
+  void removeFromDaysList(String _value) {
+    _daysList.remove(_value);
+  }
+
+  dynamic _workingJson;
+  dynamic get workingJson => _workingJson;
+  set workingJson(dynamic _value) {
+    _workingJson = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

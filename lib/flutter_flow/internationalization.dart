@@ -359,10 +359,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OutletDetailsPage
   {
-    'ju8vwx9u': {
-      'en': '(250)',
-      'pt': '',
-    },
     'frg23sjb': {
       'en': 'Loja de artigos esportivas',
       'pt': '',
@@ -403,10 +399,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hours :',
       'pt': '',
     },
-    'mdzg0fwd': {
-      'en': 'Saturday',
-      'pt': '',
-    },
     'ypzv2nwo': {
       'en': 'Sunday',
       'pt': '',
@@ -429,6 +421,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pgvp8w2h': {
       'en': 'Friday',
+      'pt': '',
+    },
+    'mdzg0fwd': {
+      'en': 'Saturday',
       'pt': '',
     },
     '95x1mjp2': {
@@ -722,55 +718,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sunday',
       'pt': '',
     },
-    '9gunikuv': {
-      'en': '7:00 am-11:00 pm',
-      'pt': '',
-    },
-    '26hhknms': {
+    '7oi9k9c8': {
       'en': 'Monday',
       'pt': '',
     },
-    'ox8vem1d': {
+    '05lk0jiu': {
       'en': '7:00 am-11:00 pm',
       'pt': '',
     },
-    'qhmhzoms': {
+    'k6ij795g': {
       'en': 'Tueday',
       'pt': '',
     },
-    '0f7usxz2': {
+    '3paeod5p': {
       'en': '7:00 am-11:00 pm',
       'pt': '',
     },
-    'uwtnz24v': {
+    '93v2y4c5': {
       'en': 'Wednesday',
       'pt': '',
     },
-    '4u0pnx81': {
+    '9ngdg0sv': {
       'en': '7:00 am-11:00 pm',
       'pt': '',
     },
-    'qmj87wn7': {
+    'yd3aa5fo': {
       'en': 'Thursday',
       'pt': '',
     },
-    '5nzffey7': {
+    'l6ax69rc': {
       'en': '7:00 am-11:00 pm',
       'pt': '',
     },
-    'b0ycm16d': {
+    'vfkxpxtz': {
       'en': 'Friday',
       'pt': '',
     },
-    'qcksx0rj': {
+    '6zdz7gbh': {
       'en': '7:00 am-11:00 pm',
       'pt': '',
     },
-    '2xc8g02d': {
+    'rsahpjyg': {
       'en': 'Saterday',
       'pt': '',
     },
-    'vwmatm8l': {
+    'lpxsj1uf': {
       'en': '7:00 am-11:00 pm',
       'pt': '',
     },
@@ -810,6 +802,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qs7s1f5y': {
       'en': 'Save',
+      'pt': '',
+    },
+  },
+  // openTime
+  {
+    '6bbmmqrf': {
+      'en': 'Open Time',
       'pt': '',
     },
   },
@@ -865,13 +864,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n73jj74d': {
       'en': 'Save',
-      'pt': '',
-    },
-  },
-  // openTime
-  {
-    '6bbmmqrf': {
-      'en': 'Open Time',
       'pt': '',
     },
   },

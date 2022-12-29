@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../components/hours_widget.dart';
 import '../components/new_nav_bar_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
@@ -5,6 +6,7 @@ import '../flutter_flow/flutter_flow_static_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/lat_lng.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,12 @@ import 'package:mapbox_search/mapbox_search.dart';
 import 'package:provider/provider.dart';
 
 class EditPageWidget extends StatefulWidget {
-  const EditPageWidget({Key? key}) : super(key: key);
+  const EditPageWidget({
+    Key? key,
+    this.outletDoc,
+  }) : super(key: key);
+
+  final RestroDetailsRecord? outletDoc;
 
   @override
   _EditPageWidgetState createState() => _EditPageWidgetState();
@@ -24,6 +31,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
   TextEditingController? textController1;
   TextEditingController? textController2;
   TextEditingController? textController3;
+  dynamic? workingHoursJsonOutput;
   TextEditingController? textController4;
   TextEditingController? textController5;
   final _unfocusNode = FocusNode();
@@ -652,61 +660,99 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
-                                      child: Container(
-                                        width: 100,
-                                        height: 80,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          border: Border.all(
-                                            color: Color(0xFF9C9C9C),
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15, 0, 15, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return Padding(
-                                                        padding: MediaQuery.of(
-                                                                context)
-                                                            .viewInsets,
-                                                        child: Container(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              1,
-                                                          child: HoursWidget(),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
-                                                },
-                                                child: Icon(
-                                                  Icons.keyboard_arrow_right,
-                                                  color: Colors.black,
-                                                  size: 26,
+                                      child: StreamBuilder<WorkingHoursRecord>(
+                                        stream: WorkingHoursRecord.getDocument(
+                                            widget.outletDoc!.workingHoursRef!),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50,
+                                                height: 50,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ),
+                                            );
+                                          }
+                                          final containerWorkingHoursRecord =
+                                              snapshot.data!;
+                                          return Container(
+                                            width: 100,
+                                            height: 80,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              border: Border.all(
+                                                color: Color(0xFF9C9C9C),
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(15, 0, 15, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      workingHoursJsonOutput =
+                                                          await actions
+                                                              .getWorkingHourJson(
+                                                        containerWorkingHoursRecord,
+                                                      );
+                                                      FFAppState().update(() {
+                                                        FFAppState()
+                                                                .workingJson =
+                                                            workingHoursJsonOutput!;
+                                                      });
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return Padding(
+                                                            padding:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .viewInsets,
+                                                            child: Container(
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  1,
+                                                              child:
+                                                                  HoursWidget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+
+                                                      setState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons
+                                                          .keyboard_arrow_right,
+                                                      color: Colors.black,
+                                                      size: 26,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ],

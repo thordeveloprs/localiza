@@ -41,6 +41,30 @@ abstract class WorkingHoursRecord
   @BuiltValueField(wireName: 'created_at')
   DateTime? get createdAt;
 
+  @BuiltValueField(wireName: 'sun_time')
+  BuiltList<TimeStruct>? get sunTime;
+
+  @BuiltValueField(wireName: 'mon_timing_list')
+  BuiltList<TimeStruct>? get monTimingList;
+
+  @BuiltValueField(wireName: 'tues_timing_list')
+  BuiltList<TimeStruct>? get tuesTimingList;
+
+  @BuiltValueField(wireName: 'wed_timing_list')
+  BuiltList<TimeStruct>? get wedTimingList;
+
+  @BuiltValueField(wireName: 'thus_timing_list')
+  BuiltList<TimeStruct>? get thusTimingList;
+
+  @BuiltValueField(wireName: 'fri_timing_list')
+  BuiltList<TimeStruct>? get friTimingList;
+
+  @BuiltValueField(wireName: 'sat_timing_list')
+  BuiltList<TimeStruct>? get satTimingList;
+
+  @BuiltValueField(wireName: 'sun_timing_list')
+  BuiltList<TimeStruct>? get sunTimingList;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -54,7 +78,15 @@ abstract class WorkingHoursRecord
     ..friTiminig = TimeStructBuilder()
     ..satTiminig = TimeStructBuilder()
     ..sunTiminig = TimeStructBuilder()
-    ..listPhotos = ListBuilder();
+    ..listPhotos = ListBuilder()
+    ..sunTime = ListBuilder()
+    ..monTimingList = ListBuilder()
+    ..tuesTimingList = ListBuilder()
+    ..wedTimingList = ListBuilder()
+    ..thusTimingList = ListBuilder()
+    ..friTimingList = ListBuilder()
+    ..satTimingList = ListBuilder()
+    ..sunTimingList = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('workingHours');
@@ -102,7 +134,15 @@ Map<String, dynamic> createWorkingHoursRecordData({
         ..satTiminig = TimeStructBuilder()
         ..sunTiminig = TimeStructBuilder()
         ..listPhotos = null
-        ..createdAt = createdAt,
+        ..createdAt = createdAt
+        ..sunTime = null
+        ..monTimingList = null
+        ..tuesTimingList = null
+        ..wedTimingList = null
+        ..thusTimingList = null
+        ..friTimingList = null
+        ..satTimingList = null
+        ..sunTimingList = null,
     ),
   );
 

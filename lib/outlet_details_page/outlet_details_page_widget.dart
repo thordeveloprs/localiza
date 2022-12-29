@@ -161,9 +161,7 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 0, 5, 0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'ju8vwx9u' /* (250) */,
-                                      ),
+                                      '(${containerRestroDetailsRecord.userCount?.toString()})',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -225,7 +223,19 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                 .googleLocation;
                                       });
 
-                                      context.pushNamed('EditPage');
+                                      context.pushNamed(
+                                        'EditPage',
+                                        queryParams: {
+                                          'outletDoc': serializeParam(
+                                            containerRestroDetailsRecord,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'outletDoc':
+                                              containerRestroDetailsRecord,
+                                        },
+                                      );
                                     },
                                     child: Material(
                                       color: Colors.transparent,
@@ -897,325 +907,388 @@ class _OutletDetailsPageWidgetState extends State<OutletDetailsPageWidget> {
                                                                         ),
                                                                   ),
                                                                 ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          0,
-                                                                          20,
-                                                                          0),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
+                                                                Expanded(
+                                                                  child:
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                             0,
                                                                             0,
-                                                                            5,
+                                                                            20,
                                                                             0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'mdzg0fwd' /* Saturday */,
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .title3
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              5),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                child: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'ypzv2nwo' /* Sunday */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Roboto',
+                                                                                        color: Colors.black,
+                                                                                        fontSize: 15,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
                                                                               ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'ypzv2nwo' /* Sunday */,
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
-                                                                                fontWeight: FontWeight.normal,
+                                                                              Builder(
+                                                                                builder: (context) {
+                                                                                  final sunTimeList = rowWorkingHoursRecord.sunTimingList!.toList();
+                                                                                  return Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: List.generate(sunTimeList.length, (sunTimeListIndex) {
+                                                                                      final sunTimeListItem = sunTimeList[sunTimeListIndex];
+                                                                                      return Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                        child: Text(
+                                                                                          '${sunTimeListItem.startHour}-${sunTimeListItem.endHour}',
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: Colors.black,
+                                                                                                fontSize: 15,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }),
+                                                                                  );
+                                                                                },
                                                                               ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'ssw1m41a' /* Monday */,
+                                                                            ],
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
-                                                                                fontWeight: FontWeight.normal,
-                                                                              ),
                                                                         ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            't17lobhm' /* Tueday */,
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              5),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                child: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'ssw1m41a' /* Monday */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Roboto',
+                                                                                        color: Colors.black,
+                                                                                        fontSize: 15,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              Builder(
+                                                                                builder: (context) {
+                                                                                  final monTimeList = rowWorkingHoursRecord.monTimingList!.toList();
+                                                                                  return Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: List.generate(monTimeList.length, (monTimeListIndex) {
+                                                                                      final monTimeListItem = monTimeList[monTimeListIndex];
+                                                                                      return Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                        child: Text(
+                                                                                          '${monTimeListItem.startHour}-${monTimeListItem.endHour}',
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: Colors.black,
+                                                                                                fontSize: 15,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ],
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
-                                                                                fontWeight: FontWeight.normal,
-                                                                              ),
                                                                         ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'qn76gfxp' /* Wednesday */,
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              5),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                child: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    't17lobhm' /* Tueday */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Roboto',
+                                                                                        color: Colors.black,
+                                                                                        fontSize: 15,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              Builder(
+                                                                                builder: (context) {
+                                                                                  final tueTimeList = rowWorkingHoursRecord.tuesTimingList!.toList();
+                                                                                  return Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: List.generate(tueTimeList.length, (tueTimeListIndex) {
+                                                                                      final tueTimeListItem = tueTimeList[tueTimeListIndex];
+                                                                                      return Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                        child: Text(
+                                                                                          '${tueTimeListItem.startHour}-${tueTimeListItem.endHour}',
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: Colors.black,
+                                                                                                fontSize: 15,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ],
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
-                                                                                fontWeight: FontWeight.normal,
-                                                                              ),
                                                                         ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'lymonmnu' /* Thursday */,
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              5),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                child: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'qn76gfxp' /* Wednesday */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Roboto',
+                                                                                        color: Colors.black,
+                                                                                        fontSize: 15,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              Builder(
+                                                                                builder: (context) {
+                                                                                  final wedTimeList = rowWorkingHoursRecord.wedTimingList!.toList();
+                                                                                  return Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: List.generate(wedTimeList.length, (wedTimeListIndex) {
+                                                                                      final wedTimeListItem = wedTimeList[wedTimeListIndex];
+                                                                                      return Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                        child: Text(
+                                                                                          '${wedTimeListItem.startHour}-${wedTimeListItem.endHour}',
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: Colors.black,
+                                                                                                fontSize: 15,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ],
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
-                                                                                fontWeight: FontWeight.normal,
-                                                                              ),
                                                                         ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'pgvp8w2h' /* Friday */,
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              5),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                child: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'lymonmnu' /* Thursday */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Roboto',
+                                                                                        color: Colors.black,
+                                                                                        fontSize: 15,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              Builder(
+                                                                                builder: (context) {
+                                                                                  final thuTimeList = rowWorkingHoursRecord.thusTimingList!.toList();
+                                                                                  return Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: List.generate(thuTimeList.length, (thuTimeListIndex) {
+                                                                                      final thuTimeListItem = thuTimeList[thuTimeListIndex];
+                                                                                      return Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                        child: Text(
+                                                                                          '${thuTimeListItem.startHour}-${thuTimeListItem.endHour}',
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: Colors.black,
+                                                                                                fontSize: 15,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ],
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Colors.black,
-                                                                                fontSize: 15,
-                                                                                fontWeight: FontWeight.normal,
-                                                                              ),
                                                                         ),
-                                                                      ),
-                                                                    ],
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              5),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                child: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'pgvp8w2h' /* Friday */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Roboto',
+                                                                                        color: Colors.black,
+                                                                                        fontSize: 15,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              Builder(
+                                                                                builder: (context) {
+                                                                                  final friTimeList = rowWorkingHoursRecord.friTimingList!.toList();
+                                                                                  return Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: List.generate(friTimeList.length, (friTimeListIndex) {
+                                                                                      final friTimeListItem = friTimeList[friTimeListIndex];
+                                                                                      return Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                        child: Text(
+                                                                                          '${friTimeListItem.startHour}-${friTimeListItem.endHour}',
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: Colors.black,
+                                                                                                fontSize: 15,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceBetween,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                              child: Text(
+                                                                                FFLocalizations.of(context).getText(
+                                                                                  'mdzg0fwd' /* Saturday */,
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).title3.override(
+                                                                                      fontFamily: 'Roboto',
+                                                                                      color: Colors.black,
+                                                                                      fontSize: 15,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                            Builder(
+                                                                              builder: (context) {
+                                                                                final satTimeList = rowWorkingHoursRecord.satTimingList!.toList();
+                                                                                return Column(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: List.generate(satTimeList.length, (satTimeListIndex) {
+                                                                                    final satTimeListItem = satTimeList[satTimeListIndex];
+                                                                                    return Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                      child: Text(
+                                                                                        '${satTimeListItem.startHour}-${satTimeListItem.endHour}',
+                                                                                        style: FlutterFlowTheme.of(context).title3.override(
+                                                                                              fontFamily: 'Roboto',
+                                                                                              color: Colors.black,
+                                                                                              fontSize: 15,
+                                                                                            ),
+                                                                                      ),
+                                                                                    );
+                                                                                  }),
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.satTiminig.startHour}-${rowWorkingHoursRecord.satTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .title3
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.sunTiminig.startHour}-${rowWorkingHoursRecord.sunTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                              fontWeight: FontWeight.normal,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.monTiminig.startHour}-${rowWorkingHoursRecord.monTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                              fontWeight: FontWeight.normal,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.tuesTiminig.startHour}-${rowWorkingHoursRecord.tuesTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                              fontWeight: FontWeight.normal,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.wedsTiminig.startHour}-${rowWorkingHoursRecord.wedsTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                              fontWeight: FontWeight.normal,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.thusTiminig.startHour}-${rowWorkingHoursRecord.thusTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                              fontWeight: FontWeight.normal,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        '${rowWorkingHoursRecord.friTiminig.startHour}-${rowWorkingHoursRecord.friTiminig.endHour}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.black,
-                                                                              fontSize: 15,
-                                                                              fontWeight: FontWeight.normal,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
                                                                 ),
                                                               ],
                                                             );

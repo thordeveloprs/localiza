@@ -20,7 +20,21 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
   List<dynamic>? newList;
   DateTime? datePicked2;
   List<dynamic>? newList1;
-  List<TimeStruct>? result;
+  List<String>? newDaysList10;
+  List<String>? newDaysList11;
+  List<String>? newDaysList1;
+  List<String>? newDaysList;
+  List<String>? newDaysList2;
+  List<String>? newDaysList3;
+  List<String>? newDaysList4;
+  List<String>? newDaysList5;
+  List<String>? newDaysList6;
+  List<String>? newDaysList7;
+  List<String>? newDaysList8;
+  List<String>? newDaysList9;
+  List<String>? newDaysList12;
+  List<String>? newDaysList13;
+  List<dynamic>? result;
 
   @override
   void initState() {
@@ -117,11 +131,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isSunday = false;
                                       });
+                                      newDaysList =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isSunday = true;
                                       });
+                                      newDaysList1 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList1!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -165,11 +209,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isMonday = false;
                                       });
+                                      newDaysList2 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList2!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isMonday = true;
                                       });
+                                      newDaysList3 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList3!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -212,11 +286,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isTuesday = false;
                                       });
+                                      newDaysList4 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList4!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isTuesday = true;
                                       });
+                                      newDaysList5 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList5!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -259,11 +363,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isWednesday = false;
                                       });
+                                      newDaysList6 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList6!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isWednesday = true;
                                       });
+                                      newDaysList7 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList7!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -306,11 +440,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isThursday = false;
                                       });
+                                      newDaysList8 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList8!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isThursday = true;
                                       });
+                                      newDaysList9 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList9!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -353,11 +517,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isFriday = false;
                                       });
+                                      newDaysList10 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList10!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isFriday = true;
                                       });
+                                      newDaysList11 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList11!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -400,11 +594,41 @@ class _EditDayAndTimeWidgetState extends State<EditDayAndTimeWidget> {
                                       FFAppState().update(() {
                                         FFAppState().isSaturday = false;
                                       });
+                                      newDaysList12 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList12!.toList();
+                                      });
                                     } else {
                                       FFAppState().update(() {
                                         FFAppState().isSaturday = true;
                                       });
+                                      newDaysList13 =
+                                          await actions.getSelectedDaysList(
+                                        FFAppState().isSunday,
+                                        FFAppState().isMonday,
+                                        FFAppState().isTuesday,
+                                        FFAppState().isWednesday,
+                                        FFAppState().isThursday,
+                                        FFAppState().isFriday,
+                                        FFAppState().isSaturday,
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().daysList =
+                                            newDaysList13!.toList();
+                                      });
                                     }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
